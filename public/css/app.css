@@ -1,0 +1,13 @@
+navbar {
+    margin: 2rem 0 2.0rem 0;
+}
+.my-navbar {
+    align-items: center;
+    background: #333;
+    display: flex;
+    height: 3rem;
+    justify-content: space-between;
+    padding: 0 2%;
+    margin-bottom: 3rem;
+}
+    
