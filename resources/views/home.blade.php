@@ -13,13 +13,14 @@
             {{ $post->user->name }}さん
           </div>
           <div class="font-weight-lighter">
-            {{ $post->created_at }}
+          {{ $post->created_at->format('Y/m/d  i:s') }} 
           </div>
         </div>
       </div>
       <div class="card-body pt-0 pb-2">
+        
         <h3 class="h4 card-title">
-        『{{ $post->title }}』
+        <a href="{{ route('post.show', $post) }}">『{{ $post->title }}』</a>
         </h3>
         <div class="card-text">
           {{ $post->body }}

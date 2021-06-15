@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        // homeControllerで設定
     }
 
     /**
@@ -75,9 +75,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
         //
+        return view('post.show', compact('post'));
     }
 
     /**
@@ -86,9 +87,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
         //
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -98,9 +100,39 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
         //
+        // $inputs = $request()->validate([
+        //     'title' => 'required|max:225',
+        //     'body' => 'required|max:225',
+        //     'image' => 'image|max:1024',
+        // ]);
+
+
+        $inputs = $request->validate([
+            'title' => 'required|max:255',
+            'body' => 'required|max:225',
+            'image' => 'image|max:1024',
+        ]);
+        // dd($inputs);
+        // if(!empty($inputs['image']))
+        if($request['image'])
+        
+        {
+            $name = $inputs['image']->getClientOriginalName();
+            $inputs['image']->move('storage/images', $name);
+            
+            // $inputs['image']->file('image')->move('storage/images', $name);
+            $post->image = $name;
+        }
+
+        $post->title = $inputs['title'];
+        $post->body = $inputs['body'];
+        $post->save();
+
+        return back()->with('message', '投稿を編集しました');
+
     }
 
     /**
