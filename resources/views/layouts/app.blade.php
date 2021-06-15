@@ -59,7 +59,7 @@
 <!-- 実験 -->
 
 
-  {{--略--}}
+
 
 </body>
 
@@ -67,13 +67,15 @@
     <main class="py-4">
         <div class="container">
         <div class="row">
-            <div class="col-12 col-md-4 col-lg-3">
+            <div class="col-12 col-md-3 mb-3">
                 @include('layouts.sidebar')
             </div>
-            <div class="col-12 col-md-8 col-lg-9"></div>
+            <div class="col-md-9 ">
+                @yield('content')
+            </div>
         </div>
         </div>
-    @yield('content')
+    
 
     </main>
 </body>
