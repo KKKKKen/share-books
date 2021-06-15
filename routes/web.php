@@ -1,5 +1,7 @@
 <?php
 
+// 23行目::class
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/post', 'PostController');
+Route::resource('/post', 'PostController')->except(['index']);
 // php artisan route:listで確認できる  ↑７つ
 
-
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
