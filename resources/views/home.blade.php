@@ -4,8 +4,8 @@
 
 @foreach($posts as $post)
 
-<div class="container">
-    <div class="card mt-3 shadow">
+
+    <div class="card mb-3 shadow">
       <div class="card-body d-flex flex-row">
         <i class="fas fa-user-circle fa-3x mr-1"></i>
         <div>
@@ -26,6 +26,6 @@
         </div>
       </div>
     </div>
-  </div>
+ 
 @endforeach
 @endsection
