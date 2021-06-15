@@ -25,13 +25,11 @@
 </head>
 
 
-
 <body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
-    <header>
 
-
+<header>
 <nav class="navbar navbar-expand bg-info">
 <div class="container-fluid">
 
@@ -52,9 +50,8 @@
   </ul>
 </div>
 </nav>
+</header>
 
-
-    </header>
 
 <!-- 実験 -->
 
@@ -67,13 +64,19 @@
     <main class="py-4">
         <div class="container">
         <div class="row">
-            <div class="col-12 col-md-4 col-lg-3">
+        <!-- col-lg-3 -->
+        <!-- col-md-4 -->
+            <div class="col-12 col-md-3 mb-3">
                 @include('layouts.sidebar')
             </div>
-            <div class="col-12 col-md-8 col-lg-9"></div>
+            <!-- <div class="col-12 col-md-8 col-lg-9"></div> -->
+         <!-- ↓投稿　 -->
+            <div class="col-12 col-md-9">
+                @yield('content')
+            </div>
         </div>
         </div>
-    @yield('content')
+    
 
     </main>
 </body>
