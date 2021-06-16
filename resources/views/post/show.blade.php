@@ -14,6 +14,14 @@
         <button class="btn btn-primary">編集</button>
         </a>
         </span>
+
+        <!-- <form method="post" action="{{route('post.destroy', $post)}}"> -->
+        <form method="post" action="{{ route('post.destroy', $post) }}">
+            @csrf
+            @method('delete')
+            <button type="submit" class="btn btn-danger" onClick="return confirm('本当にいいの？');">削除</button>
+        </form>
+
     </div>
     <div class="card-body">
         <p class="card-text">

@@ -1,5 +1,4 @@
 <?php
-
 // 23行目::class
 
 /*
@@ -22,3 +21,6 @@ Route::resource('/post', 'PostController')->except(['index']);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
