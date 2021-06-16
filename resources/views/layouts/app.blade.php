@@ -31,7 +31,7 @@
 
     <header>
 
-
+<!-- ナビバー -->
 <nav class="navbar navbar-expand bg-info">
 <div class="container-fluid">
 

@@ -27,8 +27,26 @@
         <a href="{{ route('post.show', $post) }}">『{{ $post->title }}』</a>
         </h3>
         <div class="card-text">
-          {{ $post->body }}
+          {{ Str::limit($post->body, 10) }}
         </div>
+
+        <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
+                    <div class="px-2 pt-3">
+                        @if ($post->comments->count())
+                        <span class="text-dark badge badge-info">
+                            返信 {{$post->comments->count()}}件
+                        </span>
+                    @else
+                        <span>コメントはまだありません。</span>
+                    @endif
+
+                    </div>
+                    <div class="px-4 pt-3"> 
+                       <button type="button" class="btn btn-info">
+                          <a href="{{route('post.show', $post)}}" style="color:white;">コメントする</a>
+                      </button> </div>
+                </div>
+
       </div>
     </div>
  
