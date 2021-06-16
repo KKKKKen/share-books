@@ -24,3 +24,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+Route::post('post/{post}/comment/store', 'CommentController@store')->name('comment.store');
+Route::post('post/{post}/comment/edit', 'CommentController@edit')->name('comment.edit');
