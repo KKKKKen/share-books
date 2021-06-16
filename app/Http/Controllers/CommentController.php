@@ -27,9 +27,11 @@ class CommentController extends Controller
         return back();
     }
 
-    public function destroy(Post $post)
+    public function destroy(Post $post, Int $id)
     {
-        $post->comments()->delete();
+        $one_coment = $post->comments()->find($id);
+        // dd($one_coment);
+        $one_coment->delete();
         return redirect()->route('home')->with('message', '投稿を削除しました');
     }
 

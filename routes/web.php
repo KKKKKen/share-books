@@ -30,4 +30,7 @@ Route::post('post/{post}/comment/edit', 'CommentController@edit')->name('comment
 
 // Route::get('post/{post}/comment/destroy', 'CommentController@destroy')->name('comment.destroy');
 // Route::post('post/{post}/comment/destroy', 'CommentController@destroy')->name('comment.destroy');
-Route::delete('post/{post}/comment/destroy', 'CommentController@destroy')->name('comment.destroy');
+// Route::delete('post/{post}/comment/destroy', 'CommentController@destroy')->name('comment.destroy');
+
+// param 
+Route::delete('post/{post}/comment/{comment}/destroy', 'CommentController@destroy')->name('comment.destroy');
