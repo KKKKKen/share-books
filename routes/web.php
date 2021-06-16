@@ -23,6 +23,11 @@ Route::resource('/post', 'PostController')->except(['index']);
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-
+// コメントの作成、編集、削除
 Route::post('post/{post}/comment/store', 'CommentController@store')->name('comment.store');
 Route::post('post/{post}/comment/edit', 'CommentController@edit')->name('comment.edit');
+
+
+// Route::get('post/{post}/comment/destroy', 'CommentController@destroy')->name('comment.destroy');
+// Route::post('post/{post}/comment/destroy', 'CommentController@destroy')->name('comment.destroy');
+Route::delete('post/{post}/comment/destroy', 'CommentController@destroy')->name('comment.destroy');

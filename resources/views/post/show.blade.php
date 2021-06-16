@@ -55,6 +55,21 @@
             投稿日時 {{$comment->created_at->diffForHumans()}}
         </span>
     </div>
+<!-- 削除ボタン↓ -->
+    <form method="post" action="{{ route('comment.destroy', $post) }}">
+    @method('delete')    
+    @csrf
+    <button type="submit" class="btn btn-info" onclick="return confirm('本当に削除しても大丈夫ですか？');">削除</button>
+    </form>
+
+    <form method="post" action="{{ route('comment.destroy', $post) }}">
+            @csrf
+            @method('delete')
+            <button type="submit" class="btn btn-danger" onClick="return confirm('本当にいいの？');">削除</button>
+    </form>
+
+
+
 </div>
 @endforeach
 @endif
