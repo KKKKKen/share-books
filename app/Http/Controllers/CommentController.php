@@ -19,8 +19,9 @@ class CommentController extends Controller
         ]);
         $comment = Comment::Create([
             'body' => $inputs['body'],
-            // userどうするか↓
+            // userどうするか↓ 
             'user_id' =>1,
+            // 'user_id' => Auth()->user()->id;
             'post_id' => $request->post_id,
         ]);
 
