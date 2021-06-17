@@ -24,8 +24,11 @@ Route::middleware('auth')->group(function(){
     Route::get('/', 'HomeController@index')->name('home');
     
     // 自分の投稿一覧
-    Route::get('/mypost', 'HomeController@mypost')->name('home.mypost');
+    Route::get('/mypost', 'HomeController@myposts')->name('home.myposts');
     
+    // コメント一覧
+    Route::get('mycomment','HomeController@mycomments')->name('home.mycomments');
+
     // コメントの作成、編集、削除
     Route::post('post/{post}/comment/store', 'CommentController@store')->name('comment.store');
     Route::post('post/{post}/comment/edit', 'CommentController@edit')->name('comment.edit');

@@ -2,42 +2,45 @@
 
 @section('content')
 
-<div class="card mb-4">
-    <div class="card-header">
-        <div class="text-muted small mr-3"> 
-            {{$post->user->name}}
-        </div>
-        <h4>{{$post->title}}</h4>
-       
+<!-- カード -->
+<div class="card mb-3 shadow">
+      <div class="card-body d-flex flex-row">
+        <i class="fas fa-user-circle fa-3x mr-1"></i>
+     <div>
+          <div class="font-weight-bold">
+            {{ $post->user->name }}さん
+          </div>
+
+        <div class="d-flex float-end">
+          <!-- 編集ボタン -->
         <span class="ml-auto">
         <a href="{{ route('post.edit', $post) }}">
         <button class="btn btn-primary">編集</button>
         </a>
         </span>
-
+           <!-- 削除ボタン -->
         <!-- <form method="post" action="{{route('post.destroy', $post)}}"> -->
         <form method="post" action="{{ route('post.destroy', $post) }}">
             @csrf
             @method('delete')
             <button type="submit" class="btn btn-danger" onClick="return confirm('本当にいいの？');">削除</button>
         </form>
+        </div>
+        
 
-    </div>
-    <div class="card-body">
-        <p class="card-text">
-            {{$post->body}}
-        </p>
-        @if ($post->image)
-
-        <img src="{{asset('storage/images/'.$post->image)}}" 
-        class="img-fluid mx-auto d-block" style="height:300px;">
-        @endif
-    </div>
-    <div class="card-footer">
-        <span class="mr-2 float-right">
-            投稿日時 {{$post->created_at->diffForHumans()}}
-        </span>
-    </div>
+          <div class="font-weight-lighter">
+          {{ $post->created_at->format('Y/m/d  i:s') }} 
+          </div>
+        </div>
+      </div>
+      <div class="card-body pt-0 pb-2">
+        
+        <h3 class="h4 card-title">
+    『{{ $post->title }}』
+        </h3>
+        <div class="card-text">
+          {{ $post->body }}
+        </div>
 
 <!-- コメント表示↓ -->
 @if ($post->comments)
@@ -45,7 +48,8 @@
 <div class="card mt-5 mb-4">
     
     <div class="card-header">
-        {{$comment->user->name}}
+        <!-- そもそもcommentのデータベースにnameがない↓ -->
+        {{ $comment->user->name }}
     </div>
     <div class="card-body">
         {{$comment->body}}
@@ -92,6 +96,30 @@
         </div>
     </form>
 </div>
+
+
+
+
+       </div>  
+</div>
+
+<!-- ↑ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </div>
 

@@ -20,7 +20,7 @@ class CommentController extends Controller
         $comment = Comment::Create([
             'body' => $inputs['body'],
             // userどうするか↓ 
-            'user_id' =>1,
+            'user_id' =>auth()->user()->id,
             // 'user_id' => Auth()->user()->id;
             'post_id' => $request->post_id,
         ]);
