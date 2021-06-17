@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 
 class PostController extends Controller
@@ -58,7 +59,9 @@ class PostController extends Controller
 
         $post->title = $inputs['title'];
         $post->body = $inputs['body'];
-        $post->user_id = 1;
+        // $post->user_id = Auth()->user->id;
+        $post->user_id = Auth::id();
+        
 
 
         // todolistではuser_idを保存していなかった。一旦飛ばそう

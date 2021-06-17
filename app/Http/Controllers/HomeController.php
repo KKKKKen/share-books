@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
+use App\Models\Comment;
 
 class HomeController extends Controller
 {
@@ -22,10 +24,20 @@ class HomeController extends Controller
         // userを本来なら渡している
 
     }
-    public function mypost()
+    public function myposts()
+    {
+        // Auth::id();は
+        // $user = Auth()->user()->id;
+        $user = Auth::id();
+
+        $posts = Post::where('user_id', $user)->get();
+        // $posts = Post::where('user_id', $user)->orderBy('created_at', 'asc')->get();
+        return view('myposts', compact('posts', 'user'));
+    }
+    public function mycomments()
     {
         $user = Auth()->user()->id;
-        $posts = Post::where('user_id', $user)->orderBy('created_at', 'asc')->get();
-        return view('mypost', compact('posts'));
+        $comments = Comment::where('user_id', $user)->orderBy('created_at', 'desc')->get();
+        return view('mycomments', compact('comments'));
     }
 }

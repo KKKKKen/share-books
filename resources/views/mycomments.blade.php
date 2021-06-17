@@ -6,9 +6,16 @@
 <div class="alert alert-success">{{ session('message') }}</div>
 @endif
 
-@foreach($posts as $post)
+@if(count($comments) == 0)
+<h4 class="text-center mt-3">まだ投稿していません。</h4>
+@endif
 
-<!-- カード -->
+@foreach($comments->unique('post_id') as $comment)
+
+@php
+$post = $comment->post;
+@endphp
+
     <div class="card mb-3 shadow">
       <div class="card-body d-flex flex-row">
         <i class="fas fa-user-circle fa-3x mr-1"></i>
@@ -30,10 +37,9 @@
           {{ Str::limit($post->body, 10) }}
         </div>
 
-        
         <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
                     <div class="px-2 pt-3">
-                    @if ($post->comments->count())
+                        @if ($post->comments->count())
                         <span class="text-dark badge badge-info">
                             返信 {{$post->comments->count()}}件
                         </span>
@@ -52,4 +58,5 @@
     </div>
  
 @endforeach
+
 @endsection
