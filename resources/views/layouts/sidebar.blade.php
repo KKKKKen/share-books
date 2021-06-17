@@ -1,5 +1,6 @@
 
 <div class="list-group">
+
 <a href="{{ route('home') }}" class="list-group-item
 {{ url()->current() == route('home') ? 'active' : '' }}
 ">
@@ -8,10 +9,15 @@
 </a>
 
 <a href="{{ route('post.create') }}" class="list-group-item
-{{ url()->current() == route('post.create') ? 'active' : '' }}
-">
+{{ url()->current() == route('post.create') ? 'active' : '' }}">
     <!-- <i class="fas fa-pen-nib pr-2"></i><span>新規投稿</span> -->
 <span>新規投稿</span>
+</a>
+
+<a href="{{ route('home.mypost') }}" class="list-group-item
+{{ url()->current() == route('home.mypost') ? 'active' : '' }}">
+    <!-- <i class="fas fa-pen-nib pr-2"></i><span>新規投稿</span> -->
+<span>自分の投稿</span>
 </a>
 
 </div>

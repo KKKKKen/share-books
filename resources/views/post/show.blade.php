@@ -42,7 +42,7 @@
 <!-- コメント表示↓ -->
 @if ($post->comments)
 @foreach ($post->comments as $comment)
-<div class="card mb-4">
+<div class="card mt-5 mb-4">
     
     <div class="card-header">
         {{$comment->user->name}}
