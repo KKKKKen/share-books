@@ -22,4 +22,10 @@ class HomeController extends Controller
         // userを本来なら渡している
 
     }
+    public function mypost()
+    {
+        $user = Auth()->user()->id;
+        $posts = Post::where('user_id', $user)->orderBy('created_at', 'asc')->get();
+        return view('mypost', compact('posts'));
+    }
 }

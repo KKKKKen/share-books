@@ -30,7 +30,12 @@ class RegisterController extends Controller
      * @var string
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
-    protected $redirectTo = '/home';
+    protected $redirectTo = RouteServiceProvider::HOME;
+
+    protected function loggedOut(\Illuminate\Http\Request $request)
+    {
+        return redirect('/');
+    }
 
     /**
      * Create a new controller instance.
