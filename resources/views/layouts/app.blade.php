@@ -14,7 +14,7 @@
 <!-- おそらくbootstrap読み込む -->
 
 <!-- ↓forumの読み込み -->
-<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
 <!-- <link href="{{ asset('css/forum.css') }}" rel="stylesheet"> -->
 <!-- ↑forumの読み込み -->
 
@@ -38,17 +38,33 @@
   <a class="navbar-brand" href="{{ route('home') }}"><i class="far fa-sticky-note mr-1"></i>Share Books</a>
 
   <ul class="navbar-nav ml-auto">
+  @auth
     <li class="nav-item">
-      <a class="nav-link" href="">ユーザー登録</a>
+    <a class="nav-link" href="#">{{ Auth::user()->name.'さん' }}</a>
     </li>
-
+   
     <li class="nav-item">
-      <a class="nav-link" href="">ログイン</a>
+      <a class="nav-link" id="logout" href="#">ログアウト</a>
     </li>
 
     <li class="nav-item">
       <a class="nav-link" href="{{ route('post.create') }}"><i class="fas fa-pen mr-1"></i>投稿する</a>
     </li>
+  @endauth 
+  @guest
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('register') }}">ユーザー登録</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('login') }}">ログイン</a>
+    </li>
+  @endguest
+
+  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+  </form>
+
   </ul>
 </div>
 </nav>
@@ -57,9 +73,6 @@
     </header>
 
 <!-- 実験 -->
-
-
-
 
 </body>
 
@@ -79,5 +92,11 @@
 
     </main>
 </body>
+<script>
+  document.getElementById('logout').addEventListener('click', function(){
+    event.preventDefault();
+    document.getElementById('logout-form').submit();
+  });
+</script>
 
 </html>
