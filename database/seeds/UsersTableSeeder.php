@@ -16,15 +16,26 @@ class UsersTableSeeder extends Seeder
     {
         //
         DB::table('users')->insert([
+        [
             'id' => 1,
-            'name' => 'Akira',
+            'name' => 'Tkakeshi',
             'email' => 'test@test.com',
             // 'email_verified_at'  => '',
             // email_verified_atって何？
             'password' => Hash::make('password1234'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            
-        ]);
+        ],
+        [
+            'id' => 2,
+            'name' => 'Akari',
+            'email' => 'test2@test.com',
+            // 'email_verified_at'  => '',
+            // email_verified_atって何？
+            'password' => bcrypt('password1234'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ],
+     ]);
     }
 }
