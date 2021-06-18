@@ -45,4 +45,9 @@ class User extends Authenticatable
         $this->hasMany('App\Models\Post');
         // 小文字だとどうなるか実験
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Models\Role');
+    }
 }

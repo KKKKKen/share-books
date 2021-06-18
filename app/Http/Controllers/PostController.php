@@ -105,6 +105,9 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        // ポリシー
+        $this->authorize('update', $post);
+
         //
         // $inputs = $request()->validate([
         //     'title' => 'required|max:225',
@@ -147,6 +150,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+        $this->authorize('destroy', $post);
         $post->delete();
         return redirect()->route('home')->with('message', '投稿を削除しました');
     }
