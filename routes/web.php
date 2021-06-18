@@ -28,6 +28,12 @@ Route::middleware('auth')->group(function(){
     
     // コメント一覧
     Route::get('mycomment','HomeController@mycomments')->name('home.mycomments');
+    
+    // 管理者画面
+    Route::middleware(['can:admin'])->group(function(){
+        Route::get('/profile/index', 'ProfileController@index')->name('profile.index');
+    });
+    
 
     // コメントの作成、編集、削除
     Route::post('post/{post}/comment/store', 'CommentController@store')->name('comment.store');

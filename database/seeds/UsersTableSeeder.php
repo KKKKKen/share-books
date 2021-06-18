@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
         [
             'id' => 1,
-            'name' => 'Tkakeshi',
+            'name' => 'Tkakeshi_administrator',
             'email' => 'test@test.com',
             // 'email_verified_at'  => '',
             // email_verified_atって何？
@@ -28,8 +28,18 @@ class UsersTableSeeder extends Seeder
         ],
         [
             'id' => 2,
-            'name' => 'Akari',
+            'name' => 'Akari_user',
             'email' => 'test2@test.com',
+            // 'email_verified_at'  => '',
+            // email_verified_atって何？
+            'password' => bcrypt('password1234'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ],
+        [
+            'id' => 3,
+            'name' => '松本_user',
+            'email' => 'test3@test.com',
             // 'email_verified_at'  => '',
             // email_verified_atって何？
             'password' => bcrypt('password1234'),

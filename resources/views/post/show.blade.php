@@ -10,23 +10,29 @@
           <div class="font-weight-bold">
             {{ $post->user->name }}さん
           </div>
-
+        
         <div class="d-flex float-end">
           <!-- 編集ボタン -->
+        @can('update', $post)
         <span class="ml-auto">
         <a href="{{ route('post.edit', $post) }}">
         <button class="btn btn-primary">編集</button>
         </a>
         </span>
+        @endcan
+        
            <!-- 削除ボタン -->
+        @can('delete', $post)
         <!-- <form method="post" action="{{route('post.destroy', $post)}}"> -->
         <form method="post" action="{{ route('post.destroy', $post) }}">
             @csrf
             @method('delete')
             <button type="submit" class="btn btn-danger" onClick="return confirm('本当にいいの？');">削除</button>
         </form>
-        </div>
+        @endcan
         
+        </div>
+    
 
           <div class="font-weight-lighter">
           {{ $post->created_at->format('Y/m/d  i:s') }} 

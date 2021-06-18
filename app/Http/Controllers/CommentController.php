@@ -25,7 +25,7 @@ class CommentController extends Controller
             'post_id' => $request->post_id,
         ]);
 
-        return back();
+        return back()->with('message', 'コメントしました');
     }
 
     public function destroy(Post $post, Int $id)
