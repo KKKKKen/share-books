@@ -58,6 +58,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'avatar' => ['image', 'max:1024'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -70,10 +71,29 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $attr = [
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
+        ];
+
+        if(request()->hasFile('avatar')){
+            $name = request()->file('avatar')->getClientOriginalName();
+            $avatar = date('Ymd_His').'_'.$name;
+            request()->file('avatar')->storeAs('public/avatar', $avatar);
+            $attr['avatar'] = $avatar;
+        }
+        $user = User::create($attr);
+        $user->roles()->attach(2);
+        return $user;
+
+      
+
+
+        // return User::create([
+        //     'name' => $data['name'],
+        //     'email' => $data['email'],
+        //     'password' => Hash::make($data['password']),
+        // ]);
     }
 }
