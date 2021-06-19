@@ -29,6 +29,10 @@ Route::middleware('auth')->group(function(){
     // コメント一覧
     Route::get('mycomment','HomeController@mycomments')->name('home.mycomments');
     
+    // Route::get('/profile/{user}/edit', 'ProfileController@edit')->name('profile');
+    // Route::post('/profile/{user}', 'ProfileController@update')->name('profile.update');
+
+
     // 管理者画面
     Route::middleware(['can:admin'])->group(function(){
         Route::get('/profile/index', 'ProfileController@index')->name('profile.index');
