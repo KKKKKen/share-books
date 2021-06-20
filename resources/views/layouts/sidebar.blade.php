@@ -37,7 +37,10 @@
    </a>
 @endcan
 
+<a href="{{ route('profile.edit', auth()->user()->id) }}"
+    class="list-group-item {{ url()->current() == route('profile.edit', auth()->user()->id) ? 'active' : ''}}">
+    <span>プロフィール</span>
+</a>
+  
 @endif
-
-
 </div>

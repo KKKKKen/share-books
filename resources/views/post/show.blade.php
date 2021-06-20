@@ -7,9 +7,12 @@
       <div class="card-body d-flex flex-row">
         <i class="fas fa-user-circle fa-3x mr-1"></i>
      <div>
+         
           <div class="font-weight-bold">
             {{ $post->user->name }}さん
           </div>
+          <img src="{{ asset('/storage/avatar/'.($post->user->avatar ?? 'user_default.jpg')) }}" 
+          class="rounded-circle" style="height:40px;width:40px;">
         
         <div class="d-flex float-end">
           <!-- 編集ボタン -->
@@ -53,10 +56,12 @@
 @foreach ($post->comments as $comment)
 <div class="card mt-5 mb-4">
     
-    <div class="card-header">
-        <!-- そもそもcommentのデータベースにnameがない↓ -->
-        {{ $comment->user->name }}
-    </div>
+<div class="card-header">
+    <img src="{{ asset('/storage/avatar/'.$comment->user->avatar ?? 'user_default.jpg') }}"
+    class="rounded-circle" style="width:40px;height:40px;">
+    {{ $comment->user->name }}
+</div>
+
     <div class="card-body">
         {{$comment->body}}
     </div>
