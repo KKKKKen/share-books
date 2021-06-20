@@ -14,6 +14,10 @@
       <div class="card-body d-flex flex-row">
         <i class="fas fa-user-circle fa-3x mr-1"></i>
         <div>
+
+        <img src="{{ asset('/storage/avatar/'.($post->user->avatar ?? 'user_default.jpg')) }}"
+        class="rounded-circle" style="width:40px;height:40px;">
+        
           <div class="font-weight-bold">
             {{ $post->user->name }}さん
           </div>
