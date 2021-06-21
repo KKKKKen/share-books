@@ -37,10 +37,19 @@
    </a>
 @endcan
 
+
+<a href="{{ route('profile.edit', auth()->id() ) }}" class="list-group-item
+{{ url()->current() == route('profile.edit', auth()->id() ) ? 'active' : '' }}">
+    <!-- <i class="fas fa-pen-nib pr-2"></i><span>新規投稿</span> -->
+<span>プロフィール編集</span>
+</a>
+
+
 <a href="{{ route('profile.edit', auth()->user()->id) }}"
     class="list-group-item {{ url()->current() == route('profile.edit', auth()->user()->id) ? 'active' : ''}}">
     <span>プロフィール</span>
 </a>
   
+
 @endif
 </div>

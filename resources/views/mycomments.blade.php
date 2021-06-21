@@ -21,7 +21,11 @@ $post = $comment->post;
         <i class="fas fa-user-circle fa-3x mr-1"></i>
         <div>
           <div class="font-weight-bold">
-            {{ $post->user->name }}さん
+          <img src="{{asset('storage/avatar/'.($post->user->avatar??'user_default.jpg'))}}"
+                        class="rounded-circle" style="width:40px;height:40px;">
+          {{ $post->user->name }}さん
+
+                        
           </div>
 
           <!-- img -->

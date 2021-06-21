@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
-<!-- メッセージ表示 -->
+
 @if(session('message'))
 <div class="col-8 mx-auto alert alert-success">{{session('message')}}</div>
 @endif
 
-<!-- -- エラー表示 -- -->
+
 @if ($errors->any())
 <div class="col-8 mx-auto alert alert-danger">
     <ul>
@@ -35,6 +35,9 @@
                         <input type="text" name="email" class="form-control" id="email" value="{{old('email')??$user->email}}">
                     </div>
 
+
+                    <!-- 画像 -->
+
                     <div class="form-group">
                         <label for="avatar">アバター変更（サイズは1MBまで）</label>
                         <img src="{{asset('storage/avatar/'.($user->avatar??'user_default.jpg'))}}"
@@ -43,6 +46,9 @@
                             <input id="avatar" type="file" name="avatar">
                         </div>
                     </div>
+
+                    <!-- 画像 -->
+
 
                     <div class="form-group">
                         <label for="password">パスワード(8文字以上）</label>
@@ -66,8 +72,7 @@
     </div>
 </div>
 
+
 @endsection
-
-
 
 

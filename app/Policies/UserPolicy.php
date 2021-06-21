@@ -3,8 +3,11 @@
 namespace App\Policies;
 
 use App\Models\User;
+
+
 use Illuminate\Http\Request;
 use Illuminate\Auth\Access\Response;
+
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserPolicy
@@ -43,7 +46,7 @@ class UserPolicy
     public function create(User $user)
     {
         //
-        
+
     }
 
     /**
@@ -55,20 +58,24 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        
-        if($user->id == $model->id){
-            return true;
-        }
-        
+
         foreach($user->roles as $role){
             if($role->name == 'admin'){
                 return true;
             }
         }
+
+        // if($user->id == $model->id){
+        //     return true;
+        // }
+
+        return $user->id == $model->id;
+
         // return $user->id === $model->id
         // ? Response::allow()
         // : Response::deny('You do not own this post.');
         // return false;
+
     }
 
     /**
