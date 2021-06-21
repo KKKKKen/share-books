@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function(){
     
     // param 
     Route::delete('post/{post}/comment/{comment}/destroy', 'CommentController@destroy')->name('comment.destroy');
+    // Route::delete('post/{post}/comment/{id}/destroy', 'CommentController@destroy')->name('comment.destroy');
     
 
 });
