@@ -31,8 +31,9 @@ Route::middleware('auth')->group(function(){
     
     // Route::get('/profile/{user}/edit', 'ProfileController@edit')->name('profile');
     // Route::post('/profile/{user}', 'ProfileController@update')->name('profile.update');
-
-
+    Route::get('profile/{user}/edit', 'ProfileController@edit')->name('profile.edit');
+    Route::post('profile/{user}/update', 'ProfileController@update')->name('profile.update');
+    
     // 管理者画面
     Route::middleware(['can:admin'])->group(function(){
         Route::get('/profile/index', 'ProfileController@index')->name('profile.index');

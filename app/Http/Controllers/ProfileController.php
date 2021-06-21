@@ -17,4 +17,17 @@ class ProfileController extends Controller
         $users = User::all();
         return view('profile.index', compact('users'));
     }
+
+    public function edit(User $user)
+    {
+        $this->authorize('update', $user);
+        return view('profile.edit', compact('user'));
+    }
+    
+    public function update(User $user, Request $request)
+    {
+        $this->authorize('update', $user);
+        return ;
+
+    }
 }

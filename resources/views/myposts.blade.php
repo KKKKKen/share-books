@@ -16,6 +16,9 @@
         <div>
           <div class="font-weight-bold">
             {{ $post->user->name }}さん
+          
+                        <img src="{{asset('storage/avatar/'.($post->user->avatar??'user_default.jpg'))}}"
+                        class="rounded-circle" style="width:40px;height:40px;">
           </div>
           <div class="font-weight-lighter">
           {{ $post->created_at->format('Y/m/d  i:s') }} 
