@@ -47,6 +47,10 @@ class ProfileController extends Controller
         // if($inputs['avatar'])
         if(request('avatar'))
         {
+            if(request('avatar')){
+                $oldAvatar = 'public/avatar/'.$user->avatar;
+                Storage::delete($oldAvatar);
+            }
             $name = request()->file('avatar')->getClientOriginalName();
             $avatar = date('Ymd_His').'_'.$name;
             $inputs['avatar'] = $avatar;

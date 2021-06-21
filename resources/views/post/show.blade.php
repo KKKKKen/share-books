@@ -9,13 +9,13 @@
      <div>
          
           <div class="font-weight-bold">
-            {{ $post->user->name }}さん
-
-                        <img src="{{asset('storage/avatar/'.($post->user->avatar??'user_default.jpg'))}}"
-                        class="rounded-circle" style="width:40px;height:40px;">
-          </div>
           <img src="{{ asset('/storage/avatar/'.($post->user->avatar ?? 'user_default.jpg')) }}" 
           class="rounded-circle" style="height:40px;width:40px;">
+            {{ $post->user->name }}さん
+
+                        
+          </div>
+
         
         <div class="d-flex float-end">
           <!-- 編集ボタン -->
