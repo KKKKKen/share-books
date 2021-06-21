@@ -67,18 +67,26 @@
 
     <div class="card-body">
         {{$comment->body}}
+
     </div>
     <div class="card-footer">
-        <span class="mr-2 float-right">
-            投稿日時 {{$comment->created_at->diffForHumans()}}
-        </span>
-    </div>
-<!-- 削除ボタン↓ -->
-    <form method="post" action="{{ route('comment.destroy', [$post, $comment->id]) }}">
+    @can('delete', $comment)
+
+ <!-- 引数は$comment->idでも$commentでもよい -->
+    <form method="post" action="{{ route('comment.destroy', [$post, $comment->id]) }}"
+        class="d-inline">
     @method('delete')    
     @csrf
     <button type="submit" class="btn btn-info" onclick="return confirm('本当に削除しても大丈夫ですか？');">削除</button>
     </form>
+    @endcan
+
+    
+        <span class="mr-2">
+            投稿日時 {{$comment->created_at->diffForHumans()}}
+        </span>
+    </div>
+<!-- 削除ボタン↓ -->
 
 
 </div>
