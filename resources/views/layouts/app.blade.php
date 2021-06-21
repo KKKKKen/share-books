@@ -39,6 +39,14 @@
 
   <ul class="navbar-nav ml-auto">
   @auth
+    <!-- なぞ -->
+    <img src="{{ asset('/storage/avatar/'.($post->user->avatar ?? 'user_default.jpg')) }}" 
+    class="rounded-circle" style="height:40px;width:40px;">
+    <!-- 画像２エラー起きる -->
+
+    
+
+
     <li class="nav-item">
     <a class="nav-link" href="#">{{ Auth::user()->name.'さん' }}</a>
     </li>
