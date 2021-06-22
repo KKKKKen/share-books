@@ -16,6 +16,7 @@ class HomeController extends Controller
         // $posts = Post::all();
         // ではなく
         $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
         // ::使うのはいつ？？
 
         // ↓何？
