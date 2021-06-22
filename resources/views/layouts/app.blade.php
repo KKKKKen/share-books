@@ -14,7 +14,7 @@
 <!-- おそらくbootstrap読み込む -->
 
 <!-- ↓forumの読み込み -->
-    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <!-- <link href="{{ asset('css/forum.css') }}" rel="stylesheet"> -->
 <!-- ↑forumの読み込み -->
 
