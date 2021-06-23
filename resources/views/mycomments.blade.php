@@ -8,7 +8,7 @@
 
 @if(count($comments) == 0)
 
-<h4 class="text-center mt-3 bg-light">まだ投稿していません。</h4>
+<h4 class="text-center mt-3 bg-light">まだコメントしていません。</h4>
 
 @endif
 
@@ -40,7 +40,7 @@ $post = $comment->post;
       <div class="card-body pt-0 pb-2">
         
         <h3 class="h4 card-title">
-        <a href="{{ route('post.show', $post) }}">『{{ $post->title }}』</a>
+        <a href="{{ route('post.show', $post) }}" class="link-hover">『{{ $post->title }}』</a>
         </h3>
         <div class="card-text">
           {{ Str::limit($post->body, 10) }}
@@ -48,7 +48,7 @@ $post = $comment->post;
 
         <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
                     <div class="px-2 pt-3">
-                        @if ($post->comments->count())
+                    @if ($post->comments->count())
                         <span class="text-dark badge badge-info">
                             返信 {{$post->comments->count()}}件
                         </span>
@@ -59,13 +59,15 @@ $post = $comment->post;
 
                     </div>
                     <div class="px-4 pt-3"> 
-                       <button type="button" class="btn btn-brown">
+                       <button type="button" class="btn btn-brown link-hover">
                           <a href="{{route('post.show', $post)}}" style="color:white;">コメントする</a>
                       </button> </div>
                 </div>
 
       </div>
     </div>
+
+
  
 @endforeach
 

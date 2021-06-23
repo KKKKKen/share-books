@@ -5,14 +5,14 @@
 @endphp
 
 @if(Auth::check())
-<a href="{{ route('home') }}" class="list-group-item 
+<a href="{{ route('home') }}" class="list-group-item
 {{ url()->current() == route('home') ? 'active-brown' : 'brown' }}
 ">
     <!-- <i> class="fas fa-home pr-2</i><span>一覧表示</span> -->
 <span>一覧表示</span>
 </a>
 
-<a href="{{ route('post.create') }}" class="list-group-item 
+<a href="{{ route('post.create') }}" class="list-group-item
 {{ url()->current() == route('post.create') ? 'active-brown' : 'brown' }}">
     <!-- <i class="fas fa-pen-nib pr-2"></i><span>新規投稿</span> -->
 <span>新規投稿</span>
@@ -43,11 +43,16 @@
     <!-- <i class="fas fa-pen-nib pr-2"></i><span>新規投稿</span> -->
 <span>プロフィール編集</span>
 </a>
+@else
+
+<div class="container login-info">
+<div class="bg-brown m-8 text-light text-center">本共有サイト</div>
+<div class="bg-brown m-8 text-light text-center text-bold">あなたのお気に入りの本をみんなにシェアしよう！</div>
 
 
-
-
-  
+</div>
 
 @endif
+
+
 </div>

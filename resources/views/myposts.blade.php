@@ -29,7 +29,7 @@
       <div class="card-body pt-0 pb-2">
         
         <h3 class="h4 card-title">
-        <a href="{{ route('post.show', $post) }}">『{{ $post->title }}』</a>
+        <a href="{{ route('post.show', $post) }}" class="link-hover">『{{ $post->title }}』</a>
         </h3>
         <div class="card-text">
           {{ Str::limit($post->body, 10) }}
@@ -47,7 +47,7 @@
 
                     </div>
                     <div class="px-4 pt-3"> 
-                       <button type="button" class="btn btn-brown">
+                       <button type="button" class="btn btn-brown link-hover">
                           <a href="{{route('post.show', $post)}}" style="color:white;">コメントする</a>
                       </button> </div>
                 </div>
