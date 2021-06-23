@@ -41,7 +41,7 @@
     
 
           <div class="font-weight-lighter">
-          {{ $post->created_at->format('Y/m/d  i:s') }} 
+          {{ $post->created_at->format('Y/m/d G:i') }} 
           </div>
         </div>
       </div>
@@ -114,7 +114,7 @@
             placeholder="コメントを入力する">{{old('body')}}</textarea>
         </div>
         <div class="form-group">
-        <button class="btn btn-success float-right mb-3 mr-3">コメントする</button>
+        <button class="btn btn-brown text-light mt-3 float-right mb-3 mr-3">コメントする</button>
         </div>
     </form>
 </div>

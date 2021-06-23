@@ -7,7 +7,9 @@
 @endif
 
 @if(count($comments) == 0)
-<h4 class="text-center mt-3">まだ投稿していません。</h4>
+
+<h4 class="text-center mt-3 bg-light">まだ投稿していません。</h4>
+
 @endif
 
 @foreach($comments->unique('post_id') as $comment)
@@ -31,7 +33,7 @@ $post = $comment->post;
 
 
           <div class="font-weight-lighter">
-          {{ $post->created_at->format('Y/m/d  i:s') }} 
+          {{ $post->created_at->format('Y/m/d  G:s') }} 
           </div>
         </div>
       </div>
@@ -51,12 +53,13 @@ $post = $comment->post;
                             返信 {{$post->comments->count()}}件
                         </span>
                     @else
+                        
                         <span>コメントはまだありません。</span>
                     @endif
 
                     </div>
                     <div class="px-4 pt-3"> 
-                       <button type="button" class="btn btn-info">
+                       <button type="button" class="btn btn-brown">
                           <a href="{{route('post.show', $post)}}" style="color:white;">コメントする</a>
                       </button> </div>
                 </div>

@@ -1,7 +1,7 @@
 body {
     background-image: url();
     /* background-image: url({{ asset('storage/avatar/user.default.jpg') }}) ;  */
-     background-image: url(../images/default.jpg);
+     background-image: url(../images/library.jpg);
     /* 画像を常に上下左右の中央に配置させる */
     background-position: center center; 
     /* 画像を繰り返し表示しない */
@@ -20,7 +20,7 @@ body {
 
 
 .card {
-    opacity: 97%;
+    opacity: 98%;
 }
 
 
@@ -37,11 +37,39 @@ navbar {
     padding: 0 2%;
     margin-bottom: 3rem;
 }
-.active-info {
-    background-color:#39C0ED;
+.active-brown {
+    background-color:#663300;
     color:white;
 }
-.active-info:hover {
+.active-brown:hover {
     color:white;
+}
+.bg-brown {
+    background-color: #663300;
+}
+.brown {
+    color: #755f4a;
+}
+.brown:hover {
+    color: #663300;
+    opacity: 90%;
+    
+}
+.white {
+    color:white;
+}
+.black {
+    color:black;
+}
+a {
+    color:white;
+    opacity: 98%;
+    
+}
+.nav-hover {
+
+}
+.btn-brown {
+    background-color: #663300;
 }
     

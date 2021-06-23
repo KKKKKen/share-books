@@ -4,8 +4,8 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-10 mt-6">
-        <div class="card-body">
+    <div class="col-md-10 mt-6" >
+        <div class="card-body rounded" style="background-color:white;">
             <h1 class="mt4">新規投稿</h1>
             
 
@@ -53,7 +53,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-success">送信する </button>
+                <button type="submit" class="text-light btn btn-brown mt-3">送信する </button>
             </form>
         </div>
     </div>

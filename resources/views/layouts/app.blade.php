@@ -32,7 +32,7 @@
     <header>
 
 <!-- ナビバー -->
-<nav class="navbar navbar-expand bg-info">
+<nav class="navbar navbar-expand bg-brown">
 <div class="container-fluid">
 
   <a class="navbar-brand" href="{{ route('home') }}"><i class="far fa-sticky-note mr-1"></i>Share Books</a>

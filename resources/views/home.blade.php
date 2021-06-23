@@ -24,7 +24,7 @@
         <!-- ↑アバター -->
 
           <div class="font-weight-lighter">
-          {{ $post->created_at->format('Y/m/d  i:s') }} 
+          {{ $post->created_at->format('Y/m/d  G:i') }} 
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@
 
                     </div>
                     <div class="px-4 pt-3"> 
-                       <button type="button" class="btn btn-info">
+                       <button type="button" class="btn btn-brown">
                           <a href="{{route('post.show', $post)}}" style="color:white;">コメントする</a>
                       </button> </div>
                 </div>
