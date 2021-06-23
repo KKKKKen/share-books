@@ -17,7 +17,7 @@
 </div>
 @endif
 
-<div class="container ml-auto col-12 col-md-10 col-lg-8 rounded" style="background-color:white; opacity:98%;">
+<div class="container ml-auto col-12 col-md-10 col-lg-8 rounded shadow" style="background-color:white; opacity:98%;">
     <div class="row">
         <div class="col-md-10 mt-6 mx-auto">
             <div class="card-body">
@@ -66,7 +66,7 @@
                         required autocomplete="new-password">
                     </div>
 
-                    <button type=”submit” class="btn btn-brown text-light mt-3">送信する</button>
+                    <button type=”submit” class="btn btn-brown text-light mt-3 link-hover">送信する</button>
                 </form>
             </div>
         </div>      

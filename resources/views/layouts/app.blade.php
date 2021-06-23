@@ -32,10 +32,10 @@
     <header>
 
 <!-- ナビバー -->
-<nav class="navbar navbar-expand bg-brown">
+<nav class="navbar navbar-expand bg-brown fixed-top mb-3">
 <div class="container-fluid">
 
-  <a class="navbar-brand" href="{{ route('home') }}"><i class="far fa-sticky-note mr-1"></i>Share Books</a>
+  <a class="navbar-brand nav-hover" href="{{ route('home') }}"><i class="far fa-sticky-note mr-1"></i>Share Books</a>
 
   <ul class="navbar-nav ml-auto">
   @auth
@@ -45,27 +45,25 @@
     <!-- 画像２エラー起きる -->
 
     
-
-
     <li class="nav-item">
-    <a class="nav-link" href="#">{{ Auth::user()->name.'さん' }}</a>
+    <a class="nav-link nav-hover" href="{{ route('profile.edit', auth()->id()) }}">{{ Auth::user()->name.'さん' }}</a>
     </li>
    
     <li class="nav-item">
-      <a class="nav-link" id="logout" href="#">ログアウト</a>
+      <a class="nav-link nav-hover" id="logout" href="#">ログアウト</a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('post.create') }}"><i class="fas fa-pen mr-1"></i>投稿する</a>
+      <a class="nav-link nav-hover" href="{{ route('post.create') }}"><i class="fas fa-pen mr-1"></i>投稿する</a>
     </li>
   @endauth 
   @guest
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('register') }}">ユーザー登録</a>
+      <a class="nav-link nav-hover" href="{{ route('register') }}">ユーザー登録</a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('login') }}">ログイン</a>
+      <a class="nav-link nav-hover" href="{{ route('login') }}">ログイン</a>
     </li>
   @endguest
 
@@ -111,6 +109,9 @@
 
     </main>
 </body>
+
+@yield('script')
+
 <script>
   document.getElementById('logout').addEventListener('click', function(){
     event.preventDefault();

@@ -57,12 +57,16 @@
 <!-- コメント表示↓ -->
 @if ($post->comments)
 @foreach ($post->comments as $comment)
-<div class="card mt-5 mb-4">
+<div class="card mt-5 mb-4 shadow 
+@if(auth()->id() == $comment->user_id)
+border-brown
+@endif
+">
     
 <div class="card-header">
     <img src="{{ asset('/storage/avatar/'.$comment->user->avatar ?? 'user_default.jpg') }}"
     class="rounded-circle" style="width:40px;height:40px;">
-    {{ $comment->user->name }}
+    {{ $comment->user->name }} さん
 </div>
 
     <div class="card-body">
@@ -113,8 +117,8 @@
             <textarea name="body" class="form-control" id="body" cols="30" rows="5" 
             placeholder="コメントを入力する">{{old('body')}}</textarea>
         </div>
-        <div class="form-group">
-        <button class="btn btn-brown text-light mt-3 float-right mb-3 mr-3">コメントする</button>
+        <div class="form-group link-hover">
+        <button class="btn btn-brown text-light mt-3 float-right mb-3 mr-3 ">コメントする</button>
         </div>
     </form>
 </div>
