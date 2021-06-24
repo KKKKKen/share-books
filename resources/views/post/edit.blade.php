@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-10 mt-6">
-        <div class="card-body">
+        <div class="card-body bg-light">
             <h1 class="mt4">投稿編集</h1>
             
 

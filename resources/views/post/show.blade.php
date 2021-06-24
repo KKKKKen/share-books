@@ -46,7 +46,11 @@
         </div>
       </div>
       <div class="card-body pt-0 pb-2">
-        
+<!-- 機能していない なくても表示される -->
+        @if($post->image)
+        <img src="{{ asset('storage/images/'.$post->image)}}" 
+        class="img-fluid mx-auto d-block" style="height:300px;">
+        @endif
         <h3 class="h4 card-title">
     『{{ $post->title }}』
         </h3>

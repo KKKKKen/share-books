@@ -20,8 +20,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
         'avatar',
+        'email',
+        // 順番は関係あるのかな？
         'password',
     ];
 

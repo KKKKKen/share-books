@@ -40,7 +40,7 @@
                     <!-- 画像の表示↓ -->
                     <div class="form-group">
                         <label for="avatar">アバター変更（サイズは1MBまで）</label>
-                        <img src="{{asset('storage/avatar/'.($user->avatar??'user_default.jpg'))}}"
+                        <img src="{{asset('storage/avatar/'.($user->avatar??'user_default.jpg') )}}"
                         class="d-block rounded-circle mb-3" style="height:100px;width:100px;">
                        <!-- 画像をアップロードするための欄↓ -->
                         <div>
