@@ -39,10 +39,9 @@
 
   <ul class="navbar-nav ml-auto">
   @auth
-    <!-- なぞ -->
-    <img src="{{ asset('/storage/avatar/'.($post->user->avatar ?? 'user_default.jpg')) }}" 
-    class="rounded-circle" style="height:40px;width:40px;">
     <!-- 画像２エラー起きる -->
+    <img src="{{ asset('/storage/avatar/'.(auth()->user()->avatar ?? 'user_default.jpg') ) }}"
+    class="rounded-circle" style="height:40px; width:40px;">
 
     
     <li class="nav-item">
