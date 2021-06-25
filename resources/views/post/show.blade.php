@@ -11,7 +11,7 @@
           <div class="font-weight-bold">
           <img src="{{ asset('/storage/avatar/'.($post->user->avatar ?? 'user_default.jpg')) }}" 
           class="rounded-circle" style="height:40px;width:40px;">
-            {{ $post->user->name }}さん
+            {{ $post->user->name ?? '削除されたユーザー' }}さん
 
                         
           </div>
@@ -70,7 +70,7 @@ border-brown
 <div class="card-header">
     <img src="{{ asset('/storage/avatar/'.$comment->user->avatar ?? 'user_default.jpg') }}"
     class="rounded-circle" style="width:40px;height:40px;">
-    {{ $comment->user->name }} さん
+    {{ $comment->user->name  ?? '削除されたユーザー'}} さん
 </div>
 
     <div class="card-body">

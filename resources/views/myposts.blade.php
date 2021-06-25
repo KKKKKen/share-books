@@ -18,7 +18,7 @@
           <div class="font-weight-bold">
           <img src="{{asset('storage/avatar/'.($post->user->avatar??'user_default.jpg'))}}"
           class="rounded-circle" style="width:40px;height:40px;">
-            {{ $post->user->name }}さん
+            {{ $post->user->name ?? '削除されたユーザー' }}さん
           
           </div>
           <div class="font-weight-lighter">

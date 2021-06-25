@@ -68,6 +68,55 @@
 
                     <button type=”submit” class="btn btn-brown text-light mt-3 link-hover">送信する</button>
                 </form>
+
+                <!-- 権限付与 -->
+                @can('admin')
+                <div class="mt-5">
+                    <h4 class="mb-3">役割付与・削除（アドミンユーザーにのみ表示）</h4>
+                    <table class="table border">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col-4" width="30%">役割</th>
+                                <th scope="col-4" width="40%">付与/削除</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($roles as $role)
+                            <tr>
+                                <td>
+                             
+                                    {{$role->name}}
+                                </td>
+                                <td>
+                                    @if(!$user->roles->contains($role))
+                                    <form method="post" action="{{route('role.attach', $user)}}">
+                                        @csrf
+                                        @method('put')
+                                        <input type="hidden" name="role" value="{{$role->id}}">
+                                        <button class="btn btn-primary">ロール追加</button>
+                                    </form>
+                                    @endif
+
+                                    @if($user->roles->contains($role))
+                                    <form method="post" action="{{route('role.detach', $user)}}">
+                                        @csrf
+                                        @method('put')
+                                        <input type="hidden" name="role" value="{{$role->id}}">
+                                        <button class="btn btn-danger">ロール削除</button>
+                                    </form>
+                                    @endif
+                                </td>
+
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+                @endcan
+
+
             </div>
         </div>      
     </div>
