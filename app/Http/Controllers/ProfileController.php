@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use App\Models\Role;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -28,7 +29,8 @@ class ProfileController extends Controller
     public function edit(User $user)
     {
         $this->authorize('update', $user);
-        return view('profile.edit', compact('user'));
+        $roles = Role::all();
+        return view('profile.edit', compact('user', 'roles'));
     }
 
     
@@ -58,7 +60,10 @@ class ProfileController extends Controller
         if(request('avatar'))
         {
             $oldAvatar = 'public/avatar/'.$user->avatar;
-            Storage::delete('oldAvatar');
+           if($oldAvatar !== 'public/avatar/user_default.jpg'){
+            Storage::delete($oldAvatar);
+           }
+            
             // ファイルを削除してpublicとモデルに保存する
             $avatar_name = request()->file('avatar')->getClientOriginalName();
             $name = date('Ymd_His').'_'.$avatar_name;
@@ -97,5 +102,16 @@ class ProfileController extends Controller
         // return back()->with('message', '情報を更新しました');
     
         // updateの閉じタグ↓
+    }
+    public function destroy(User $user, Request $request)
+    {
+        $user->roles()->detach();
+        if($user->avatar !== 'user_default.jpg'){
+            Storage::delete('public/avatar/.$user->avatar');
+        }
+        
+        $user->delete();
+        return back()->with('message', 'ユーザーを削除しました');
+
     }
 }

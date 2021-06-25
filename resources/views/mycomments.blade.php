@@ -25,7 +25,7 @@ $post = $comment->post;
           <div class="font-weight-bold">
           <img src="{{asset('storage/avatar/'.($post->user->avatar??'user_default.jpg'))}}"
                         class="rounded-circle" style="width:40px;height:40px;">
-          {{ $post->user->name }}さん
+          {{ $post->user->name ?? '削除されたユーザー' }}さん
 
                         
           </div>
@@ -46,7 +46,7 @@ $post = $comment->post;
           {{ Str::limit($post->body, 10) }}
         </div>
 
-        <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
+        <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3 shadow">
                     <div class="px-2 pt-3">
                     @if ($post->comments->count())
                         <span class="text-dark badge badge-info">

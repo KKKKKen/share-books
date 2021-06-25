@@ -14,7 +14,7 @@
         <i class="fas fa-user-circle fa-3x mr-1"></i>
         <div>
           <div class="font-weight-bold">
-            {{ $post->user->name }}さん
+            {{ $post->user->name ?? "削除されたユーザー"}}
           </div>
 
 

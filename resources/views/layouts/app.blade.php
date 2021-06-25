@@ -39,7 +39,7 @@
 
   <ul class="navbar-nav ml-auto">
   @auth
-    <!-- 画像２エラー起きる -->
+
     <img src="{{ asset('/storage/avatar/'.(auth()->user()->avatar ?? 'user_default.jpg') ) }}"
     class="rounded-circle" style="height:40px; width:40px;">
 

@@ -37,6 +37,9 @@ Route::middleware('auth')->group(function(){
     // 管理者画面
     Route::middleware(['can:admin'])->group(function(){
         Route::get('/profile/index', 'ProfileController@index')->name('profile.index');
+        Route::delete('/profile/{user}/destroy', 'ProfileController@destroy')->name('profile.destroy');
+        Route::put('/profile/{user}/attach', 'RoleController@attach')->name('role.attach');
+        Route::put('/profile/{user}/detach', 'RoleController@detach')->name('role.detach');
     });
     
 
