@@ -5,6 +5,28 @@
 @endphp
 
 @if(Auth::check())
+
+<!-- 検索バー -->
+<form class="d-flex input-group w-auto mb-3 opacity"
+ action="{{route('search')}}">
+      <input
+        type="search"
+        class="form-control rounded"
+        placeholder="キーワードを入力してください"
+        aria-label="Search"
+        aria-describedby="search-addon"
+        name="keyword"
+        value="{{ request('keyword')  }}"
+      />
+
+      <div class="link-hover">
+      <button class="btn btn-brown text-light float-right ">検索する</button>
+      <!-- <input type="submit" value="検索" class="btn btn-brown"> -->
+      </div>
+      
+</form>
+
+
 <a href="{{ route('home') }}" class="list-group-item
 {{ url()->current() == route('home') ? 'active-brown' : 'brown' }}
 ">

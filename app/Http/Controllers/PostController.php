@@ -15,9 +15,34 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // homeControllerで設定
+        // 検索結果実験       
+        // キーワード受け取り
+        $keyword = $request->input('keyword');
+        
+        // クエリ作成
+       $query = Post::query();
+        // もしキーワードがあったら
+        if(!empty($keyword))
+        {
+             $query->where('title', 'like', '%'.$keyword.'%')
+             ->orWhere('body', 'like', '%'.$keyword.'%')
+             ->orWhere('created_at', 'like', '%'.$keyword.'%');
+         }
+
+// home
+        // ↓一覧表示
+        $posts = $query->orderBy('created_at', 'desc')->paginate();
+        // $posts = Post::orderBy('created_at', 'desc')->paginate(5);
+        // ::使うのはいつ？？
+
+        // ↓何？
+        // $user = auth::user();
+        return view('home', compact('posts', 'keyword'));
+
+
     }
 
     /**

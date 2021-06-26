@@ -13,10 +13,13 @@
 */
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SearchController;
 
 Route::middleware('auth')->group(function(){
     
-    Route::resource('/post', 'PostController')->except(['index']);
+    Route::resource('/post', 'PostController')
+    // ->except(['index'])
+    ;
     // php artisan route:listで確認できる  ↑７つ
     
     // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -42,6 +45,8 @@ Route::middleware('auth')->group(function(){
         Route::put('/profile/{user}/detach', 'RoleController@detach')->name('role.detach');
     });
     
+    // 検索バー
+    Route::get('/search', 'SearchController@search')->name('search');
 
     // コメントの作成、編集、削除
     Route::post('post/{post}/comment/store', 'CommentController@store')->name('comment.store');
