@@ -8,7 +8,7 @@
 
 @if(count($comments) == 0)
 
-<h4 class="text-center mt-3 bg-light">まだコメントしていません。</h4>
+<h4 class="text-center mt-3 bg-light opacity">まだコメントしていません。</h4>
 
 @endif
 

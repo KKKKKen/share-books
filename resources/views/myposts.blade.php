@@ -59,7 +59,7 @@
 
 @if(count($posts) == 0)
 
-<h4 class="text-center mt-3" style="background-color:white;">まだ投稿していません</h4>
+<h4 class="text-center mt-3 opacity rounded" style="background-color:white;">まだ投稿していません</h4>
 @endif
 
 

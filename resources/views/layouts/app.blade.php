@@ -44,6 +44,8 @@
     class="rounded-circle" style="height:40px; width:40px;">
 
     
+
+
     <li class="nav-item">
     <a class="nav-link nav-hover" href="{{ route('profile.edit', auth()->id()) }}">{{ Auth::user()->name.'さん' }}</a>
     </li>

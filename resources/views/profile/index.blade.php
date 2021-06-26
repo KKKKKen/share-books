@@ -1,11 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
-<h1 class="mt4">ユーザー 一覧</h1>
+
 @if(session('message'))
 <div class="alert alert-success">{{ session('message') }}</div>
 @endif
-<table class="table" style="background-color:white;">
+<h1 class="mt4 bg-light opacity rounded text-center">ユーザー 一覧</h1>
+<table class="table opacity rounded" style="background-color:white;">
     <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>

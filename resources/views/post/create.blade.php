@@ -5,7 +5,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-10 mt-6" >
-        <div class="card-body rounded" style="background-color:white;">
+        <div class="card-body rounded opacity" style="background-color:white;">
             <h1 class="mt4">新規投稿</h1>
             
 
