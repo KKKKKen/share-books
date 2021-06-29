@@ -23,6 +23,8 @@
         <!-- ↑アバター -->
 
         <!-- ここから -->
+        <i class="fa-solid fa-bookmark "></i>
+        
         @if(Auth::check())
         @if($post->favorites->count() == 0)
         <form method="post" action="{{ route('favorite.store', $post) }}">

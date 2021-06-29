@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Favorite;
+use Symfony\Component\HttpKernel\Event\PostResponseEvent;
 
 class HomeController extends Controller
 {
@@ -43,6 +45,17 @@ class HomeController extends Controller
     }
     public function myfavorites()
     {
-        return redirect()->route('home');
+        $user = auth()->id();
+        // ログイン中でfavoritesのpost_id
+        $favorites = Favorite::where('user_id', $user)->get('post_id');
+// dd($favorites);
+        $posts = Post::find($favorites);
+// ↑実験
+        // 動く↓
+        // $user = Auth::id();
+        // $favorites = Favorite::where('user_id', $user)->get('post_id');
+        // $posts = Post::find($favorites);
+        // 動く↑
+        return view('myfavorites', compact('posts'));
     }
 }
