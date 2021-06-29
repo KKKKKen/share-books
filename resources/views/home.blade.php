@@ -11,7 +11,6 @@
 <!-- カード -->
     <div class="card mb-3 shadow ">
       <div class="card-body d-flex flex-row">
-        <i class="fas fa-user-circle fa-3x mr-1"></i>
         <div>
           <div class="font-weight-bold">
             {{ $post->user->name ?? "削除されたユーザー"}}
@@ -22,6 +21,29 @@
         <img src="{{asset('storage/avatar/'.($post->user->avatar??'user_default.jpg')) }}"
          class="rounded-circle" style="width:40px;height:40px;">
         <!-- ↑アバター -->
+
+        <!-- ここから -->
+        @if(Auth::check())
+        @if($post->favorites->count() == 0)
+        <form method="post" action="{{ route('favorite.store', $post) }}">
+            @csrf  
+            <button>
+              登録
+            <i class="fa-solid fa-heart m-0 p-1 {{ $post->favorite == null ? 'bg-info': '' }}"></i>
+          </button>
+        </form>
+        @endif
+        @if($post->favorites->count())
+        <form method="post" action="{{ route('favorite.destroy', $post) }}">
+            @csrf  
+            @method('delete')
+            <button>
+              削除
+            <i class="fa-solid fa-heart m-0 p-1 {{ $post->favorite == null ? 'bg-brown': '' }}"></i>
+          </button>
+        </form>
+        @endif
+        @endif
 
           <div class="font-weight-lighter">
           {{ $post->created_at->format('Y/m/d  G:i') }} 

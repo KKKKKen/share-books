@@ -2,6 +2,14 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+<!-- vue.js実験 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+<!-- vue.js実験 -->
+
+<!-- アイコン読み込み-->
+
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Share Books</title>
@@ -55,7 +63,7 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link nav-hover" href="{{ route('post.create') }}"><i class="fas fa-pen mr-1"></i>投稿する</a>
+      <a class="nav-link nav-hover" href="{{ route('post.create') }}">投稿する</a>
     </li>
   @endauth 
   @guest
@@ -75,14 +83,13 @@
   </ul>
 </div>
 </nav>
-
+<!-- ナビバー修了 -->
 
     </header>
 
 <!-- 実験 -->
 
 </body>
-
 
     <main class="py-4">
         <div class="container">
@@ -102,7 +109,16 @@
             </div>
 
             @endif
+
+                <div id="app">
                 @yield('content')
+                </div>
+
+
+                <script src="{{ mix('js/app.js') }}"></script>
+                <!-- jquery -->
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
+
             </div>
         </div>
         </div>

@@ -32,6 +32,8 @@ Route::middleware('auth')->group(function(){
     // コメント一覧
     Route::get('mycomment','HomeController@mycomments')->name('home.mycomments');
     
+    // お気に入り一覧
+    Route::get('myfavorite', 'HomeController@myfavorites')->name('home.myfavorites');
 
     // アカウント編集
     Route::get('/profile/{user}/edit', 'ProfileController@edit')->name('profile.edit');
@@ -52,7 +54,11 @@ Route::middleware('auth')->group(function(){
     Route::post('post/{post}/comment/store', 'CommentController@store')->name('comment.store');
     Route::post('post/{post}/comment/edit', 'CommentController@edit')->name('comment.edit');
     
+    // お気に入り
+    Route::post('post/{post}/favorite', 'FavoriteController@store')->name('favorite.store');
+    Route::delete('post/{post}/unfavorite', 'FavoriteController@destroy')->name('favorite.destroy');
     
+
     // Route::get('post/{post}/comment/destroy', 'CommentController@destroy')->name('comment.destroy');
     // Route::post('post/{post}/comment/destroy', 'CommentController@destroy')->name('comment.destroy');
     // Route::delete('post/{post}/comment/destroy', 'CommentController@destroy')->name('comment.destroy');

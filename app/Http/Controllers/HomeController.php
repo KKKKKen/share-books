@@ -41,4 +41,8 @@ class HomeController extends Controller
         $comments = Comment::where('user_id', $user)->orderBy('created_at', 'desc')->get();
         return view('mycomments', compact('comments'));
     }
+    public function myfavorites()
+    {
+        return redirect()->route('home');
+    }
 }
