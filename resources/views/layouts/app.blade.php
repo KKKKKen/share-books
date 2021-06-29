@@ -8,7 +8,8 @@
 <!-- vue.js実験 -->
 
 <!-- アイコン読み込み-->
-
+<!-- <script src="https://kit.fontawesome.com/c4d4bee47a.js" crossorigin="anonymous"></script> -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
@@ -43,8 +44,8 @@
 <nav class="navbar navbar-expand bg-brown fixed-top mb-3">
 <div class="container-fluid">
 
-  <a class="navbar-brand nav-hover" href="{{ route('home') }}"><i class="far fa-sticky-note mr-1"></i>Share Books</a>
-
+  <a class="navbar-brand nav-hover" href="{{ route('home') }}"><i class=""></i>Share Books</a>
+<!-- classにfar fa-sticky-note mr-1  ↑ -->
   <ul class="navbar-nav ml-auto">
   @auth
 

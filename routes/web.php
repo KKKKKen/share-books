@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function(){
     // コメント一覧
     Route::get('mycomment','HomeController@mycomments')->name('home.mycomments');
     
-    // お気に入り一覧
+    // お気に入り一覧 kkkkkkkkkkkkkkkkkkkkkkkkkkkkk
     Route::get('myfavorite', 'HomeController@myfavorites')->name('home.myfavorites');
 
     // アカウント編集
