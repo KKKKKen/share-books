@@ -7,7 +7,7 @@
 @if(Auth::check())
 
 <!-- 検索バー -->
-<form class="d-flex input-group w-auto mb-3 opacity"
+<form class="d-flex input-group w-auto mb-3 bg-light rounded opacity"
  action="{{route('search')}}">
       <input
         type="search"
@@ -50,6 +50,11 @@
 {{ url()->current() == route('home.mycomments') ? 'active-brown' : 'brown' }}">
     <!-- <i class="fas fa-pen-nib pr-2"></i><span>新規投稿</span> -->
 <span>自分のコメント</span>
+</a>
+
+<a href="{{ route('home.myfavorites') }}" class="list-group-item
+{{ url()->current() == route('home.myfavorites') ? 'active-brown' : 'brown' }}">
+<span>お気に入り</span>
 </a>
 
 @can('admin')

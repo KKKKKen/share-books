@@ -15,7 +15,7 @@ class User extends Authenticatable
 
     /**
      * The attributes that are mass assignable.
-     *
+     *d
      * @var array
      */
     protected $fillable = [
@@ -54,4 +54,5 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\Role');
     }
+    
 }
