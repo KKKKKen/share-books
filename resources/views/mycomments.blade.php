@@ -20,7 +20,7 @@ $post = $comment->post;
 
     <div class="card mb-3 shadow">
       <div class="card-body d-flex flex-row">
-        <i class="fas fa-user-circle fa-3x mr-1"></i>
+       
         <div>
           <div class="font-weight-bold">
           <img src="{{asset('storage/avatar/'.($post->user->avatar??'user_default.jpg'))}}"

@@ -54,13 +54,20 @@
 
 <a href="{{ route('home.myfavorites') }}" class="list-group-item
 {{ url()->current() == route('home.myfavorites') ? 'active-brown' : 'brown' }}">
-<span>お気に入り</span>
+<span>お気に入り  </span><i class="fas fa-bookmark hover 
+@if(auth()->user()->favorites()->count())
+yellow
+@else
+gray
+@endif
+"></i>
+
 </a>
 
 @can('admin')
 <a href="{{route('profile.index')}}" 
    class="list-group-item {{url()->current()==route('profile.index')?'active-brown':'brown'}}">
-   <i class="fas fa-list pr-2"></i><span>ユーザーアカウント</span>
+   <span>ユーザーアカウント</span>
    </a>
 @endcan
 
