@@ -25,8 +25,9 @@
           {{ $post->created_at->format('Y/m/d  G:i') }} 
           </div>
         </div>
-              <!-- お気に入りアイコン↓ -->  
-              <div class="">     
+
+        <!-- お気に入りアイコン↓ -->  
+        <div class="">     
         @if(Auth::check())
         @if($post->favorites->count() == 0)
         <form method="post" action="{{ route('favorite.store', $post) }}">
@@ -80,9 +81,7 @@
           </div>
           @endif
           <!-- dropdown -->
-
 <!-- ここかなドロップダウン↑ -->
-
         </div>
         
         
@@ -126,13 +125,7 @@
 @endsection
 
 @section('script')
-<script>
-document.getElementById('destroy-post').addEventListener('click', function(event){
-  event.preventDefault();
-  document.getElementById('destroy-post-form').click();
-
-});
-</script>
+@include('layouts.script')
 @endsection
 
 
