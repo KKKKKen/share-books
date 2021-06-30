@@ -10,7 +10,8 @@
 
 <!-- カード -->
     <div class="card mb-3 shadow ">
-      <div class="card-body d-flex flex-row">
+      <!-- 下のclassにある d-flex flex-row -->
+      <div class="card-body d-flex justify-content-between">
         <div>
           <div class="font-weight-bold">
             {{ $post->user->name ?? "削除されたユーザー"}}
@@ -26,9 +27,35 @@
         </div>
 <!-- ここかな -->
 
+        <!-- お気に入りアイコン↓ -->  
+        <div class="">     
+        @if(Auth::check())
+        @if($post->favorites->count() == 0)
+        <form method="post" action="{{ route('favorite.store', $post) }}">
+            @csrf  
+            <button class="clear-decoration">
+            <i class="fas fa-bookmark fa-2x gray hover"></i>
+          </button class="clear-decoration">
+        </form>
+        @endif
+        <!-- 削除 -->
+        @if($post->favorites->count())
+        <form method="post" action="{{ route('favorite.destroy', $post) }}">
+            @csrf  
+            @method('delete')
+            <button class="clear-decoration">
+              <i class="fas fa-bookmark fa-2x yellow hover"></i>
+            <!-- <i class="fa-solid fa-heart m-0 p-1 {{ $post->favorite == null ? 'bg-brown': '' }}"></i> -->
+          </button>
+        </form>
+        @endif
+        @endif
+        <!-- お気に入りアイコン↑ --> 
+
+
           <!-- dropdown -->
           @if($post->user_id == Auth::id())
-          <div class="ml-auto card-text text-end">
+          <div class="ml-auto card-text float-end text-end">
             <div class="dropdown">
 
               <button class="btn dropdown" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fas fa-ellipsis-v"></i></button>
@@ -56,33 +83,15 @@
           @endif
           <!-- dropdown -->
 
-        <div class="float-end">
-        <!-- お気に入りアイコン↓ -->       
-        @if(Auth::check())
-        @if($post->favorites->count() == 0)
-        <form method="post" action="{{ route('favorite.store', $post) }}">
-            @csrf  
-            <button class="clear-decoration">
-            <i class="fas fa-bookmark fa-3x gray hover"></i>
-          </button class="clear-decoration">
-        </form>
-        @endif
-        <!-- 削除 -->
-        @if($post->favorites->count())
-        <form method="post" action="{{ route('favorite.destroy', $post) }}">
-            @csrf  
-            @method('delete')
-            <button class="clear-decoration">
-              <i class="fas fa-bookmark fa-3x yellow hover"></i>
-            <!-- <i class="fa-solid fa-heart m-0 p-1 {{ $post->favorite == null ? 'bg-brown': '' }}"></i> -->
-          </button>
-        </form>
-        @endif
-        @endif
-        <!-- お気に入りアイコン↑ -->   
+<!-- ここかなドロップダウン↑ -->
         </div>
+        
+        
       </div>
+      
       <div class="card-body pt-0 pb-2">
+
+      
         
         <h3 class="h4 card-title">
         <a href="{{ route('post.show', $post) }}" class="link-hover"
