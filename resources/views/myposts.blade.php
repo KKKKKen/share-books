@@ -122,6 +122,9 @@
 <h4 class="text-center mt-3 opacity rounded" style="background-color:white;">まだ投稿していません</h4>
 @endif
 
+<div class="d-flex justify-content-center">{{ $posts->links() }}</div>
+
+
 @endsection
 
 @section('script')

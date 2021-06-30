@@ -33,22 +33,27 @@ class HomeController extends Controller
         // $user = Auth()->user()->id;
         $user = Auth::id();
 
-        $posts = Post::where('user_id', $user)->get();
+        $posts = Post::where('user_id', $user)->paginate(5);
         // $posts = Post::where('user_id', $user)->orderBy('created_at', 'asc')->get();
         return view('myposts', compact('posts', 'user'));
     }
     public function mycomments()
     {
         $user = Auth()->user()->id;
-        $comments = Comment::where('user_id', $user)->orderBy('created_at', 'desc')->get();
+        $comments = Comment::where('user_id', $user)->orderBy('created_at', 'desc')->paginate(5);
         return view('mycomments', compact('comments'));
     }
+
+
+    
     public function myfavorites()
     {
         $user = auth()->id();
         // ログイン中でfavoritesのpost_id
+        // $favorites = Favorite::where('user_id', $user)->paginate('post_id');
         $favorites = Favorite::where('user_id', $user)->get('post_id');
-// dd($favorites);
+
+        // dd($favorites);
         $posts = Post::find($favorites);
 // ↑実験
         // 動く↓

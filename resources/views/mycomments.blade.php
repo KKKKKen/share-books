@@ -128,6 +128,8 @@ $post = $comment->post;
 
  
 @endforeach
+<div class="d-flex justify-content-center">{{ $comments->links() }}</div>
+
 
 @endsection
 
