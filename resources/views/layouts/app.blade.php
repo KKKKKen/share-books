@@ -31,6 +31,7 @@
 <!-- <link href="{{ asset('scripts.material') }}"> -->
 <!-- ↑ material Bootstrapの読み込み -->
 
+
 </head>
 
 

@@ -5,7 +5,7 @@
 <!-- カード -->
 <div class="card mb-3 shadow">
       <div class="card-body d-flex flex-row">
-        <i class="fas fa-user-circle fa-3x mr-1"></i>
+      
      <div>
          
           <div class="font-weight-bold">
@@ -66,7 +66,7 @@
 border-brown
 @endif
 ">
-    
+    <!-- 自分の投稿だったら枠で囲む↑ -->
 <div class="card-header">
     <img src="{{ asset('/storage/avatar/'.$comment->user->avatar ?? 'user_default.jpg') }}"
     class="rounded-circle" style="width:40px;height:40px;">

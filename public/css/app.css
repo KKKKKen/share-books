@@ -101,8 +101,28 @@ a {
 
     }
   }
-
-  li::before {
-    font-family: "Font Awesome 5 Free"; 
-    content: "\f105";
+/* アイコン↓ */
+  .icon::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900; /*←ココ！！！！！！！*/
+    content: "\f007";
   }
+  .yellow {
+    color:#FFFF33;
+  }
+  .clear-decoration {
+    border: none;  /* 枠線を消す */
+    outline: none; /* クリックしたときに表示される枠線を消す */
+    background: transparent; /* 背景の灰色を消す */
+}
+
+.gray {
+    color:#808080;
+}
+.hover:hover{
+    opacity: 40%;
+}
+/* 実験 */
+.none {
+    outline: none;
+}
