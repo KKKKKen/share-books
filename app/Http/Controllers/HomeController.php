@@ -19,6 +19,9 @@ class HomeController extends Controller
         // ではなく
         $posts = Post::orderBy('created_at', 'desc')->get();
         $posts = Post::orderBy('created_at', 'desc')->paginate(5);
+        // N＋一問題↓
+        $posts = Post::orderBy('created_at', 'desc')->with(['user:id,name', 'favorites', 'comments'])->paginate(5);
+        
         // ::使うのはいつ？？
 
         // ↓何？
@@ -29,11 +32,13 @@ class HomeController extends Controller
     }
     public function myposts()
     {
-        // Auth::id();は
+        // Auth::id() = Auth::user()->id = Auth::id()
         // $user = Auth()->user()->id;
         $user = Auth::id();
 
         $posts = Post::where('user_id', $user)->paginate(5);
+        $posts = Post::where('user_id', $user)->with(['user:id,name', 'favorites', 'comments'])->orderBy('created_at', 'desc')->paginate(5);
+        
         // $posts = Post::where('user_id', $user)->orderBy('created_at', 'asc')->get();
         return view('myposts', compact('posts', 'user'));
     }
