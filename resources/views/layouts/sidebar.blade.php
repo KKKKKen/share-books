@@ -67,7 +67,7 @@ gray
 @can('admin')
 <a href="{{route('profile.index')}}" 
    class="list-group-item {{url()->current()==route('profile.index')?'active-brown':'brown'}}">
-   <span>ユーザーアカウント</span>
+   <span>ユーザーアカウント（管理者のみ）</span>
    </a>
 @endcan
 
@@ -79,12 +79,19 @@ gray
 </a>
 @else
 
-<div class="container login-info">
-<div class="bg-brown m-8 text-light text-center">本共有サイト</div>
-<div class="bg-brown m-8 text-light text-center text-bold">あなたのお気に入りの本をみんなにシェアしよう！</div>
 
 
-</div>
+<!-- <div class="container login-info list-group-item"> -->
+<div class="bg-brown m-8 text-light text-center list-group-item">本共有サイト</div>
+<div class="bg-brown m-8 text-light text-center text-bold list-group-item">あなたのお気に入りの本をみんなにシェアしよう！</div>
+<div class="bg-brown m-8 text-light text-center text-bold list-group-item"></div>
+<div class="bg-brown m-8 text-light text-center text-bold list-group-item">管理者email-address</div>
+<div class="bg-brown m-8 text-light text-center text-bold list-group-item">test@test.com</div>
+<div class="bg-brown m-8 text-light text-center text-bold list-group-item">password</div>
+<div class="bg-brown m-8 text-light text-center text-bold list-group-item">password1234</div>
+
+
+<!-- </div> -->
 
 @endif
 
