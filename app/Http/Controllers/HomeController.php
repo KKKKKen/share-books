@@ -17,18 +17,13 @@ class HomeController extends Controller
         // userと絡めないのは全部のpostを表示したいからかな
         // $posts = Post::all();
         // ではなく
-        $posts = Post::orderBy('created_at', 'desc')->get();
-        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
-        // N＋一問題↓
+        // $posts = Post::orderBy('created_at', 'desc')->get();
+        // $posts = Post::orderBy('created_at', 'desc')->paginate(5);
+        // N＋一問題↓10query
         $posts = Post::orderBy('created_at', 'desc')->with(['user:id,name', 'favorites', 'comments'])->paginate(5);
-        
-        // ::使うのはいつ？？
+        // $posts = Post::orderBy('created_at', 'desc')->with(['user:id,name', 'favorites:id,post_id', 'comments'])->paginate(5);
 
-        // ↓何？
-        // $user = auth::user();
         return view('home', compact('posts'));
-        // userを本来なら渡している
-
     }
     public function myposts()
     {
@@ -46,20 +41,24 @@ class HomeController extends Controller
     {
         $user = Auth()->user()->id;
         $comments = Comment::where('user_id', $user)->orderBy('created_at', 'desc')->paginate(5);
+        $comments = Comment::where('user_id', $user)->with(['post.user:id,name', 'post:id,created_at', 'post.favorites', 'post.comments'])->orderBy('created_at', 'desc')->paginate(5);
+        
         return view('mycomments', compact('comments'));
     }
 
-
-    
     public function myfavorites()
     {
         $user = auth()->id();
         // ログイン中でfavoritesのpost_id
         // $favorites = Favorite::where('user_id', $user)->paginate('post_id');
         $favorites = Favorite::where('user_id', $user)->get('post_id');
+        // $favorites = Favorite::where('user_id', $user)->with(['post.user:id,name', 'post:created_at,user_id,title'])->get('post_id');
+        // ↑まさかの変わらない
 
         // dd($favorites);
         $posts = Post::find($favorites);
+        $posts = Post::with(['user:id,name', 'favorites', 'comments'])->find($favorites);
+        
 // ↑実験
         // 動く↓
         // $user = Auth::id();
