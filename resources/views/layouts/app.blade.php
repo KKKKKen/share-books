@@ -8,7 +8,7 @@
 <!-- vue.js実験 -->
 
 <!-- アイコン読み込み-->
-<!-- <script src="https://kit.fontawesome.com/c4d4bee47a.js" crossorigin="anonymous"></script> -->
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,28 +45,49 @@
 <nav class="navbar navbar-expand bg-brown fixed-top mb-3">
 <div class="container-fluid">
 
-  <a class="navbar-brand nav-hover" href="{{ route('home') }}"><i class=""></i>Share Books</a>
+  <a class="navbar-brand nav-hover" href="{{ route('home') }}"><i class="fas fa-book-open"></i> Share Books</a>
 <!-- classにfar fa-sticky-note mr-1  ↑ -->
+
   <ul class="navbar-nav ml-auto">
   @auth
-
     <img src="{{ asset('/storage/avatar/'.(auth()->user()->avatar ?? 'user_default.jpg') ) }}"
     class="rounded-circle" style="height:40px; width:40px;">
 
-    
-
-
+    <li class="nav-item dropdown d-block d-sm-none">
+          <a class="nav-link nav-hover dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Link
+          </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+            
     <li class="nav-item">
-    <a class="nav-link nav-hover" href="{{ route('profile.edit', auth()->id()) }}">{{ Auth::user()->name.'さん' }}</a>
+    <a class="nav-link dropdown-item" href="{{ route('profile.edit', auth()->id()) }}">{{ Auth::user()->name }}</a>
     </li>
    
     <li class="nav-item">
-      <a class="nav-link nav-hover" id="logout" href="#">ログアウト</a>
+      <a class="nav-link dropdown-item" id="logout" href="#">ログアウト</a>
     </li>
 
     <li class="nav-item">
+      <a class="nav-link dropdown-item" href="{{ route('post.create') }}">投稿する</a>
+    </li>
+
+
+    </ul>
+    </li>
+
+    <li class="nav-item d-none d-sm-block">
+    <a class="nav-link nav-hover" href="{{ route('profile.edit', auth()->id()) }}">{{ Auth::user()->name }}</a>
+    </li>
+   
+    <li class="nav-item d-none d-sm-block">
+      <a class="nav-link nav-hover" id="logout" href="#">ログアウト</a>
+    </li>
+
+    <li class="nav-item d-none d-sm-block">
       <a class="nav-link nav-hover" href="{{ route('post.create') }}">投稿する</a>
     </li>
+
+
   @endauth 
   @guest
     <li class="nav-item">
