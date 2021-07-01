@@ -42,7 +42,7 @@
     <header>
 
 <!-- ナビバー -->
-<nav class="navbar navbar-expand bg-brown fixed-top mb-3">
+<nav class="navbar navbar-expand bg-brown opacity fixed-top mb-3">
 <div class="container-fluid">
 
   <a class="navbar-brand nav-hover" href="{{ route('home') }}"><i class="fas fa-book-open"></i> Share Books</a>
@@ -53,6 +53,7 @@
     <img src="{{ asset('/storage/avatar/'.(auth()->user()->avatar ?? 'user_default.jpg') ) }}"
     class="rounded-circle" style="height:40px; width:40px;">
 
+    <!-- dropdown -->
     <li class="nav-item dropdown d-block d-sm-none">
           <a class="nav-link nav-hover dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Link
@@ -62,14 +63,16 @@
     <li class="nav-item">
     <a class="nav-link dropdown-item" href="{{ route('profile.edit', auth()->id()) }}">{{ Auth::user()->name }}</a>
     </li>
-   
+   <!-- ログアウトなぜできる -->
     <li class="nav-item">
-      <a class="nav-link dropdown-item" id="logout" href="#">ログアウト</a>
+      <a class="nav-link dropdown-item" id="logout" name="logout" href="k">ログアウト</a>
     </li>
+
 
     <li class="nav-item">
       <a class="nav-link dropdown-item" href="{{ route('post.create') }}">投稿する</a>
     </li>
+    <!-- ↑dropdown -->
 
 
     </ul>
@@ -80,13 +83,14 @@
     </li>
    
     <li class="nav-item d-none d-sm-block">
-      <a class="nav-link nav-hover" id="logout" href="#">ログアウト</a>
+      <!-- なぜできない？ -->
+      <a class="nav-link nav-hover" id="logout2" href="#">ログアウト</a>
+      <form id="logout-form2" action="{{ route('logout') }}" method="POST" style="display: none;">
     </li>
 
     <li class="nav-item d-none d-sm-block">
       <a class="nav-link nav-hover" href="{{ route('post.create') }}">投稿する</a>
     </li>
-
 
   @endauth 
   @guest
@@ -100,6 +104,8 @@
   @endguest
 
   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+  <!-- ↓に置くとlogout-form2は効かない -->
+  <!-- <form id="logout-form2" action="{{ route('logout') }}" method="POST" style="display: none;"> -->
     @csrf
   </form>
 
@@ -153,10 +159,24 @@
 @yield('script')
 
 <script>
+  // s入れてみる
   document.getElementById('logout').addEventListener('click', function(){
     event.preventDefault();
     document.getElementById('logout-form').submit();
   });
+  document.getElementById('logout2').addEventListener('click', function(){
+    event.preventDefault();
+    document.getElementById('logout-form2').submit();
+  });
+
+  function sendPost(event) {
+  event.preventDefault();
+  var form = document.createElement('form');
+  form.action = event.target.href;
+  form.method = 'post';
+  document.body.appendChild(form);
+  form.submit();
+}
 </script>
 
 </html>
