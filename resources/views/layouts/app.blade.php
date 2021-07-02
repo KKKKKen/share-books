@@ -65,32 +65,42 @@
     </li>
    <!-- ログアウトなぜできる -->
     <li class="nav-item">
-      <a class="nav-link dropdown-item" id="logout" name="logout" href="k">ログアウト</a>
+      <a class="nav-link dropdown-item" id="logout" href="k">ログアウト</a>
+      <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> -->
     </li>
-
 
     <li class="nav-item">
       <a class="nav-link dropdown-item" href="{{ route('post.create') }}">投稿する</a>
     </li>
-    <!-- ↑dropdown -->
-
-
     </ul>
     </li>
+        <!-- ↑dropdown -->
 
+<!-- 画面がでかい時↓ -->
     <li class="nav-item d-none d-sm-block">
     <a class="nav-link nav-hover" href="{{ route('profile.edit', auth()->id()) }}">{{ Auth::user()->name }}</a>
     </li>
    
     <li class="nav-item d-none d-sm-block">
       <!-- なぜできない？ -->
-      <a class="nav-link nav-hover" id="logout2" href="#">ログアウト</a>
-      <form id="logout-form2" action="{{ route('logout') }}" method="POST" style="display: none;">
+      <!-- onclick="logout2()"はいらなかった -->
+      <a class="nav-link nav-hover" id="Logout" href="k">ログアウト</a>
+      <form name="logout-form2" id="logout-form2" action="{{ route('logout') }}" method="POST" style="display: none;">
+
+      <a class="nav-link dropdown-item" id="Logout" href="k">ログアウト</a>
     </li>
+    <script>
+    function logout2(){
+    document.getElementById('submit').submit();
+  }
+    </script>
 
     <li class="nav-item d-none d-sm-block">
       <a class="nav-link nav-hover" href="{{ route('post.create') }}">投稿する</a>
     </li>
+<!-- 画面がでかい時↑ -->
+
+
 
   @endauth 
   @guest
@@ -164,19 +174,30 @@
     event.preventDefault();
     document.getElementById('logout-form').submit();
   });
-  document.getElementById('logout2').addEventListener('click', function(){
+
+  document.getElementById('Logout').addEventListener('click', function(){
     event.preventDefault();
     document.getElementById('logout-form2').submit();
   });
 
-  function sendPost(event) {
-  event.preventDefault();
-  var form = document.createElement('form');
-  form.action = event.target.href;
-  form.method = 'post';
-  document.body.appendChild(form);
-  form.submit();
-}
+
+
+
+  // function logout2(){
+  //   document.getElementById('logout-form').submit();
+  // }
+
+
+
+//   function sendPost(event) {
+//   event.preventDefault();
+//   var form = document.createElement('form');
+//   form.action = event.target.href;
+//   form.method = 'post';
+//   document.body.appendChild(form);
+//   form.submit();
+// }
 </script>
+
 
 </html>

@@ -18,13 +18,13 @@ use App\Http\Controllers\SearchController;
 Route::middleware('auth')->group(function(){
     
     Route::resource('/post', 'PostController')
-    // ->except(['index'])
+    ->except(['index'])
     ;
     // php artisan route:listで確認できる  ↑７つ
     
     // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     // 全投稿一覧
-    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
     
     // 自分の投稿一覧
     Route::get('/mypost', 'HomeController@myposts')->name('home.myposts');
