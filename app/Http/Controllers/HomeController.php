@@ -41,7 +41,7 @@ class HomeController extends Controller
     {
         $user = Auth()->user()->id;
         $comments = Comment::where('user_id', $user)->orderBy('created_at', 'desc')->paginate(5);
-        $comments = Comment::where('user_id', $user)->with(['post.user:id,name', 'post:id,created_at', 'post.favorites', 'post.comments'])->orderBy('created_at', 'desc')->paginate(5);
+        $comments = Comment::where('user_id', $user)->with(['post.user:id,name', 'post:id,created_at,title,body', 'post.favorites', 'post.comments'])->orderBy('created_at', 'desc')->paginate(5);
         
         return view('mycomments', compact('comments'));
     }
