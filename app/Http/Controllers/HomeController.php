@@ -20,7 +20,7 @@ class HomeController extends Controller
         // $posts = Post::orderBy('created_at', 'desc')->get();
         // $posts = Post::orderBy('created_at', 'desc')->paginate(5);
         // N＋一問題↓10query
-        $posts = Post::orderBy('created_at', 'desc')->with(['user:id,name', 'favorites', 'comments'])->paginate(5);
+        $posts = Post::orderBy('created_at', 'desc')->with(['user:id,name,avatar', 'favorites', 'comments'])->paginate(5);
         // $posts = Post::orderBy('created_at', 'desc')->with(['user:id,name', 'favorites:id,post_id', 'comments'])->paginate(5);
 
         return view('home', compact('posts'));
@@ -32,7 +32,7 @@ class HomeController extends Controller
         $user = Auth::id();
 
         $posts = Post::where('user_id', $user)->paginate(5);
-        $posts = Post::where('user_id', $user)->with(['user:id,name', 'favorites', 'comments'])->orderBy('created_at', 'desc')->paginate(5);
+        $posts = Post::where('user_id', $user)->with(['user:id,name,avatar', 'favorites', 'comments'])->orderBy('created_at', 'desc')->paginate(5);
         
         // $posts = Post::where('user_id', $user)->orderBy('created_at', 'asc')->get();
         return view('myposts', compact('posts', 'user'));
@@ -41,7 +41,7 @@ class HomeController extends Controller
     {
         $user = Auth()->user()->id;
         $comments = Comment::where('user_id', $user)->orderBy('created_at', 'desc')->paginate(5);
-        $comments = Comment::where('user_id', $user)->with(['post.user:id,name', 'post:id,created_at,title,body', 'post.favorites', 'post.comments'])->orderBy('created_at', 'desc')->paginate(5);
+        $comments = Comment::where('user_id', $user)->with(['post.user:id,name,avatar', 'post:id,created_at,title,body', 'post.favorites', 'post.comments'])->orderBy('created_at', 'desc')->paginate(5);
         
         return view('mycomments', compact('comments'));
     }
@@ -58,6 +58,7 @@ class HomeController extends Controller
         // dd($favorites);
         $posts = Post::find($favorites);
         $posts = Post::with(['user:id,name', 'favorites', 'comments'])->find($favorites);
+        // $posts = Post::with(['user:id,name', 'favorites', 'comments'])->find($favorites);
         
 // ↑実験
         // 動く↓

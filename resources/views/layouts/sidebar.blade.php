@@ -9,15 +9,9 @@
 <!-- 検索バー -->
 <form class="d-flex input-group w-auto mb-3 bg-light rounded opacity"
  action="{{route('search')}}">
-      <input
-        type="search"
-        class="form-control rounded"
-        placeholder="キーワードを入力してください"
-        aria-label="Search"
-        aria-describedby="search-addon"
-        name="keyword"
-        value="{{ request('keyword')  }}"
-      />
+      <input type="search" class="form-control rounded" placeholder="キーワードを入力してください"
+        aria-label="Search" aria-describedby="search-addon"
+        name="keyword" value="{{ request('keyword')  }}"/>
 
       <div class="link-hover">
       <button class="btn btn-brown text-light float-right ">検索する</button>

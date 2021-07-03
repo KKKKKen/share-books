@@ -18,7 +18,12 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
         [
             'id' => 1,
-            'name' => 'Tkakeshi_administrator',
+            'name' => 'Takahashi_administrator',
+            // 'avatar'=> 'storage/avatar/cat.jpg',
+            // 'avatar'=> 'public/storage/avatar/cat.jpg',
+            // 'avatar'=> "user_default.jpg",
+            'avatar'=>'storage/avatar/cat.jpg',
+            // asset('/storage/avatar/'.(auth()->user()->avatar ?? 'user_default.jpg')
             'email' => 'test@test.com',
             // 'email_verified_at'  => '',
             // email_verified_atって何？
@@ -28,24 +33,54 @@ class UsersTableSeeder extends Seeder
         ],
         [
             'id' => 2,
-            'name' => 'Akari_user',
+            'name' => 'Akira',
+            'avatar'=>"rose.jpg",
             'email' => 'test2@test.com',
-            // 'email_verified_at'  => '',
-            // email_verified_atって何？
             'password' => bcrypt('password1234'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ],
         [
             'id' => 3,
-            'name' => '松本_user',
+            'name' => '松本',
+            'avatar'=>"chart.jpg",
             'email' => 'test3@test.com',
-            // 'email_verified_at'  => '',
-            // email_verified_atって何？
             'password' => bcrypt('password1234'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ],
-     ]);
+        [
+            'id' => 6,
+            'name' => 'Christina',
+            'avatar'=>"christina.jpg",
+            'email' => 'test6@test.com',
+            'password' => bcrypt('password1234'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ],
+    ]);
+        DB::table('users')->insert([
+
+            [
+                'id' => 4,
+                'name' => 'Yuri',
+                'email' => 'test4@test.com',
+                'password' => bcrypt('password1234'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'id' => 5,
+                'name' => '岡田',
+                'email' => 'test5@test.com',
+                'password' => bcrypt('password1234'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+
+        ]);
+
+        
+     
     }
 }

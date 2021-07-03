@@ -53,6 +53,8 @@
     <img src="{{ asset('/storage/avatar/'.(auth()->user()->avatar ?? 'user_default.jpg') ) }}"
     class="rounded-circle" style="height:40px; width:40px;">
 
+
+
     <!-- dropdown -->
     <li class="nav-item dropdown d-block d-sm-none">
           <a class="nav-link nav-hover dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
