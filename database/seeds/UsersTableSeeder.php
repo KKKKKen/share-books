@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
             // 'avatar'=> 'storage/avatar/cat.jpg',
             // 'avatar'=> 'public/storage/avatar/cat.jpg',
             // 'avatar'=> "user_default.jpg",
-            'avatar'=>'storage/avatar/cat.jpg',
+            'avatar'=>'cat.jpg',
             // asset('/storage/avatar/'.(auth()->user()->avatar ?? 'user_default.jpg')
             'email' => 'test@test.com',
             // 'email_verified_at'  => '',

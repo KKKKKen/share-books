@@ -50,7 +50,7 @@
 
   <ul class="navbar-nav ml-auto">
   @auth
-    <img src="{{ asset('/storage/avatar/'.(auth()->user()->avatar ?? 'user_default.jpg') ) }}"
+    <img src="{{ asset('/storage/avatar/'.(Auth()->user()->avatar ?? 'user_default.jpg') ) }}"
     class="rounded-circle" style="height:40px; width:40px;">
 
 
