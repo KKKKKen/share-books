@@ -81,7 +81,7 @@ gray
 <div class="bg-brown m-8 text-light text-center text-bold list-group-item"></div>
 <div class="bg-brown m-8 text-light text-center text-bold list-group-item">管理者email-address</div>
 <div class="bg-brown m-8 text-light text-center text-bold list-group-item">test@test.com</div>
-<div class="bg-brown m-8 text-light text-center text-bold list-group-item">password</div>
+<div class="bg-brown m-8 text-light text-center text-bold list-group-item">すべてのユーザーのpassword</div>
 <div class="bg-brown m-8 text-light text-center text-bold list-group-item">password1234</div>
 
 

@@ -18,7 +18,7 @@ class PostsTableSeeder extends Seeder
         DB::table('posts')->insert([
         [
             'title' => '君たちに武器を配りたい',
-            'body' => '本当に必要な武器を知ることが出来た。瀧本さんの本で一番お気に入りの一冊。',
+            'body' => '本当に必要な武器を知ることが出来た。瀧本さんの著書の中で一番お気に入りの一冊。',
             'user_id'=> '1',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
@@ -32,7 +32,7 @@ class PostsTableSeeder extends Seeder
         ],
         [
             'title' => '真夏の方程式',
-            'body' => '予想が出来ない面白い展開であった。親の愛情はどんなものよりも強いということを示唆していた。',
+            'body' => '予想が出来ない面白い展開であった。',
             'user_id'=> '3',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
