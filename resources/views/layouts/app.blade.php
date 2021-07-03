@@ -30,11 +30,7 @@
 <!-- ↓ material Bootstrapの読み込み -->
 <!-- <link href="{{ asset('scripts.material') }}"> -->
 <!-- ↑ material Bootstrapの読み込み -->
-
-
 </head>
-
-
 
 <body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
@@ -53,10 +49,9 @@
     <img src="{{ asset('/storage/avatar/'.(Auth()->user()->avatar ?? 'user_default.jpg') ) }}"
     class="rounded-circle" style="height:40px; width:40px;">
 
-
-
     <!-- dropdown -->
-    <li class="nav-item dropdown d-block d-sm-none">
+        <!-- liからd-sm-noneを削除 -->
+    <li class="nav-item dropdown d-block">
           <a class="nav-link nav-hover dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Link
           </a>
@@ -68,41 +63,36 @@
    <!-- ログアウトなぜできる -->
     <li class="nav-item">
       <a class="nav-link dropdown-item" id="logout" href="k">ログアウト</a>
-      <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> -->
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     </li>
 
     <li class="nav-item">
-      <a class="nav-link dropdown-item" href="{{ route('post.create') }}">投稿する</a>
+      <a class="nav-link dropdown-item" href="{{ route('post.create') }}">投稿する.</a>
     </li>
     </ul>
     </li>
         <!-- ↑dropdown -->
 
 <!-- 画面がでかい時↓ -->
-    <li class="nav-item d-none d-sm-block">
+    <!-- <li class="nav-item d-none d-sm-block">
     <a class="nav-link nav-hover" href="{{ route('profile.edit', auth()->id()) }}">{{ Auth::user()->name }}</a>
     </li>
    
     <li class="nav-item d-none d-sm-block">
-      <!-- なぜできない？ -->
-      <!-- onclick="logout2()"はいらなかった -->
-      <a class="nav-link nav-hover" id="Logout" href="k">ログアウト</a>
-      <form name="logout-form2" id="logout-form2" action="{{ route('logout') }}" method="POST" style="display: none;">
-
-      <a class="nav-link dropdown-item" id="Logout" href="k">ログアウト</a>
+      なぜできない？
+      
+      <a class="nav-link nav-hover" id="second-logout" href="k">ログアウト</a>
+      <form name="second-logout-form" id="second-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+      <form method="POST" name="a" action="{{ route('logout') }}">
+      <a href="#" onClick="document.getElementById('a').submit();">ログアウトする</a>
+      </form>
+      
     </li>
-    <script>
-    function logout2(){
-    document.getElementById('submit').submit();
-  }
-    </script>
 
     <li class="nav-item d-none d-sm-block">
       <a class="nav-link nav-hover" href="{{ route('post.create') }}">投稿する</a>
-    </li>
+    </li> -->
 <!-- 画面がでかい時↑ -->
-
-
 
   @endauth 
   @guest
@@ -171,25 +161,21 @@
 @yield('script')
 
 <script>
-  // s入れてみる
+  // scriptの中でaタグからformを送信させる処理を２つ以上書くことは出来ない
   document.getElementById('logout').addEventListener('click', function(){
     event.preventDefault();
     document.getElementById('logout-form').submit();
   });
 
-  document.getElementById('Logout').addEventListener('click', function(){
-    event.preventDefault();
-    document.getElementById('logout-form2').submit();
-  });
-
-
-
+  // document.getElementById('second-logout').addEventListener('click', function(){
+  //   event.preventDefault();
+  //   alert(ログアウトします);
+  //   document.getElementById('second-logout-form').submit();
+  // });
 
   // function logout2(){
   //   document.getElementById('logout-form').submit();
   // }
-
-
 
 //   function sendPost(event) {
 //   event.preventDefault();
