@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use Illuminate\Support\Facades\Schema; 
+//追加 
+
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -24,5 +28,16 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        // Schema::defaultStringLength(191);
+        // if (\App::environment('production')) {
+        //     \URL::forceScheme('https');
+        // } 
+        // 追加
+        if ($this->app->environment() == 'production') {
+            URL::forceScheme('https');
+        }
+
+
+
     }
 }
