@@ -15,7 +15,14 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
+    // 変更した↑
+
+
+    // 'default' => env('DB_CONNECTION', 'mysql'),
+    // オリジナルはmysql
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -63,6 +70,7 @@ return [
             ]) : [],
         ],
 
+        
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => $DATABASE_URL["host"],
