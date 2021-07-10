@@ -1,6 +1,6 @@
 <img width="944" alt="share-books-picture" src="https://user-images.githubusercontent.com/69136417/125148634-cf917280-e16e-11eb-99e5-1ad0f7a85a81.png">
 
-## Share books
+## *Share books*
 
 お気に入りの本を共有できるサイトです。画像（本の表紙）とともに投稿することが出来ます。レスポンシブ対応しており、N＋1問題を解決した設計になっています。
 
