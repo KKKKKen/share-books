@@ -13,22 +13,22 @@
 
 ## 使用技術
 
-Laravel6.20.29
-PHP 8.0.0
-JavaScript
-Material Design for Bootstrap 5
-HTML
-CSS
+Laravel6.20.29  
+PHP 8.0.0  
+JavaScript  
+Material Design for Bootstrap 5  
+HTML  
+CSS  
 
 ## 機能一覧
 
-・ユーザー登録、ログイン機能
-・記事投稿機能、画像投稿機能
-・お気に入り機能
-・プロフィール編集機能
-・コメント機能
-・検索機能
-・管理者
-・ページネーション機能
+・ユーザー登録、ログイン機能  
+・記事投稿機能、画像投稿機能  
+・お気に入り機能  
+・プロフィール編集機能  
+・コメント機能  
+・検索機能  
+・管理者  
+・ページネーション機能  
 
 
