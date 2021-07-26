@@ -30,7 +30,7 @@
         <!-- お気に入りアイコン↓ -->  
         <div class="">     
         @if(Auth::check())
-        @if($post->favorites->count() == 0)
+        @if($post->favorites()->where('user_id', auth()->id())->count() == 0)
         <form method="post" action="{{ route('favorite.store', $post) }}">
             @csrf  
             <button class="clear-decoration">
@@ -38,8 +38,8 @@
           </button class="clear-decoration">
         </form>
         @endif
-        <!-- 削除 -->
-        @if($post->favorites->count())
+        <!-- 削除↓にifがくる -->
+        @if($post->favorites()->where('user_id', auth()->id())->count())
         <form method="post" action="{{ route('favorite.destroy', $post) }}">
             @csrf  
             @method('delete')

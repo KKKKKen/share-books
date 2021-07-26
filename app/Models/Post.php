@@ -10,6 +10,7 @@ use App\Models\Favorite;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Post extends Model
 {
@@ -35,9 +36,9 @@ class Post extends Model
     {
         return $this->hasMany('App\Models\Favorite');
     }
-    // public function favorites()
+    // public function favorites():HasOne
     // {
-    //     return $this->hasOne('App\Models_');
+    //     return $this->hasOne('App\Models\Favorite');
     // }
     public function isFavorited():bool
     {
@@ -45,6 +46,8 @@ class Post extends Model
             ? true
             :false;
     }
+    // 修正↓
+
 
 
 }
