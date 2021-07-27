@@ -55,7 +55,19 @@ class PostPolicy
     public function update(User $user, Post $post)
     {
         //
-        return $user->id == $post->user_id;
+        // return $user->id == $post->user_id;
+        if($user->id == $post->user_id)
+        {
+            return true;
+        }
+        foreach($user->roles as $role)
+        {
+            if($role->id == 1){
+                return true;
+            }
+        }
+        // return false;
+
     }
 
     /**
@@ -68,7 +80,18 @@ class PostPolicy
     public function delete(User $user, Post $post)
     {
         //
-        return $user->id == $post->user_id;
+        // return $user->id == $post->user_id;
+        if($user->id == $post->user_id)
+        {
+            return true;
+        }
+        foreach($user->roles as $role)
+        {
+            if($role->id == 1){
+                return true;
+            }
+        }
+        
     }
 
     /**

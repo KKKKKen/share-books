@@ -30,8 +30,6 @@ $post = $comment->post;
                         
           </div>
 
-
-
           <div class="font-weight-lighter">
           {{ $post->created_at->format('Y/m/d  G:s') }} 
           </div>
@@ -40,7 +38,7 @@ $post = $comment->post;
         <!-- お気に入りアイコン↓ -->  
         <div class="">     
         @if(Auth::check())
-        @if($post->favorites->count() == 0)
+        @if($post->favorites()->where('user_id', auth()->id())->count() == 0)
         <form method="post" action="{{ route('favorite.store', $post) }}">
             @csrf  
             <button class="clear-decoration">
@@ -49,7 +47,7 @@ $post = $comment->post;
         </form>
         @endif
         <!-- 削除 -->
-        @if($post->favorites->count())
+        @if($post->favorites()->where('user_id', auth()->id())->count())
         <form method="post" action="{{ route('favorite.destroy', $post) }}">
             @csrf  
             @method('delete')

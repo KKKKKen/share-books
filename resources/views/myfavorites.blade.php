@@ -9,27 +9,32 @@
 
 @foreach($posts as $post)
 
-
-    <div class="card mb-3 shadow">
+<div class="card mb-3 shadow ">
+      <!-- 下のclassにある d-flex flex-row -->
       <div class="card-body d-flex justify-content-between">
-      
         <div>
           <div class="font-weight-bold">
-          <img src="{{asset('storage/avatar/'.($post->user->avatar??'user_default.jpg'))}}"
-          class="rounded-circle" style="width:40px;height:40px;">
-            {{ $post->user->name ?? '削除されたユーザー' }}さん
-          
+
+            {{ $post->user->name ?? "削除されたユーザー"}}
           </div>
+        <!-- アバター -->
+        <img src="{{asset('storage/avatar/'.($post->user->avatar??'user_default.jpg')) }}"
+         class="rounded-circle" style="width:40px;height:40px;">
+        <!-- ↑アバター -->
+
           <div class="font-weight-lighter">
           {{ $post->created_at->format('Y/m/d  G:i') }} 
           </div>
         </div>
 
         
+
+        
         <!-- お気に入りアイコン↓ -->  
         <div class="">     
         @if(Auth::check())
-        @if($post->favorites->count() == 0)
+
+        @if($post->favorites()->where('user_id', auth()->id())->count() == 0)
         <form method="post" action="{{ route('favorite.store', $post) }}">
             @csrf  
             <button class="clear-decoration">
@@ -38,7 +43,7 @@
         </form>
         @endif
         <!-- 削除 -->
-        @if($post->favorites->count())
+        @if($post->favorites()->where('user_id', auth()->id())->count())
         <form method="post" action="{{ route('favorite.destroy', $post) }}">
             @csrf  
             @method('delete')
@@ -53,7 +58,7 @@
 
 
           <!-- dropdown -->
-          @if($post->user_id == Auth::id())
+          @if($post->user_id == Auth::id() || auth()->user()->roles()->where('role_id', 1)->count())
           <div class="ml-auto card-text float-end text-end">
             <div class="dropdown">
 

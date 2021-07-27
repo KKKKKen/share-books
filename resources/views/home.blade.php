@@ -54,7 +54,8 @@
 
 
           <!-- dropdown -->
-          @if($post->user_id == Auth::id())
+
+          @if($post->user_id == Auth::id() || auth()->user()->roles()->where('role_id', 1)->count())
           <div class="ml-auto card-text float-end text-end">
             <div class="dropdown">
 

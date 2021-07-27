@@ -97,7 +97,7 @@
                                         <button class="btn btn-primary">ロール追加</button>
                                     </form>
                                     @endif
-
+                                    
                                     @if($user->roles->contains($role))
                                     <form method="post" action="{{route('role.detach', $user)}}">
                                         @csrf

@@ -8,12 +8,13 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Comment;
 use App\Models\Favorite;
+use App\Models\User;
 use Symfony\Component\HttpKernel\Event\PostResponseEvent;
 
 class HomeController extends Controller
 {
     //
-    public function index(){
+    public function index(User $user){
         // userと絡めないのは全部のpostを表示したいからかな
         // $posts = Post::all();
         // ではなく
@@ -23,7 +24,7 @@ class HomeController extends Controller
         $posts = Post::orderBy('created_at', 'desc')->with(['user:id,name,avatar', 'favorites', 'comments'])->paginate(5);
         // $posts = Post::orderBy('created_at', 'desc')->with(['user:id,name', 'favorites:id,post_id', 'comments'])->paginate(5);
 
-        return view('home', compact('posts'));
+        return view('home', compact('posts', 'user'));
     }
     public function myposts()
     {
@@ -41,7 +42,7 @@ class HomeController extends Controller
     {
         $user = Auth()->user()->id;
         $comments = Comment::where('user_id', $user)->orderBy('created_at', 'desc')->paginate(5);
-        $comments = Comment::where('user_id', $user)->with(['post.user:id,name,avatar', 'post:id,created_at,title,body', 'post.favorites', 'post.comments'])->orderBy('created_at', 'desc')->paginate(5);
+        $comments = Comment::where('user_id', $user)->with(['post.user:id,name,avatar', 'post', 'post.favorites', 'post.comments'])->orderBy('created_at', 'desc')->paginate(5);
         
         return view('mycomments', compact('comments'));
     }
@@ -57,7 +58,7 @@ class HomeController extends Controller
 
         // dd($favorites);
         $posts = Post::find($favorites);
-        $posts = Post::with(['user:id,name', 'favorites', 'comments'])->find($favorites);
+        // $posts = Post::with(['user:id,name,avatar', 'favorites', 'comments'])->find($favorites);
         // $posts = Post::with(['user:id,name', 'favorites', 'comments'])->find($favorites);
         
 // ↑実験
