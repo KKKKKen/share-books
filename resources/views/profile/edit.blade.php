@@ -97,13 +97,19 @@
                                         <button class="btn btn-primary">ロール追加</button>
                                     </form>
                                     @endif
-                                    
+
+
+
                                     @if($user->roles->contains($role))
                                     <form method="post" action="{{route('role.detach', $user)}}">
                                         @csrf
                                         @method('put')
                                         <input type="hidden" name="role" value="{{$role->id}}">
+
+                                        @if(!($role->name == 'admin' && $user->id == auth()->id()))
                                         <button class="btn btn-danger">ロール削除</button>
+                                        @endif
+                                        
                                     </form>
                                     @endif
                                 </td>
