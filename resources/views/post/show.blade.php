@@ -11,14 +11,8 @@
           <div class="font-weight-bold">
           <img src="{{ asset('/storage/avatar/'.($post->user->avatar ?? 'user_default.jpg')) }}" 
           class="rounded-circle" style="height:40px;width:40px;">
-            {{ $post->user->name ?? '削除されたユーザー' }}さん
-
-                        
+            {{ $post->user->name ?? '削除されたユーザー' }}さん  
           </div>
-
-        
-
-    
 
           <div class="font-weight-lighter">
           {{ $post->created_at->format('Y/m/d G:i') }} 
@@ -52,7 +46,7 @@
 
 
           <!-- dropdown -->
-          @if($post->user_id == Auth::id())
+          @if($post->user_id == Auth::id() || auth()->user()->roles()->where('user_id', 1)->count())
           <div class="ml-auto card-text float-end text-end">
             <div class="dropdown">
 
