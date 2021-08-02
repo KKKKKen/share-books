@@ -161,30 +161,10 @@ border-brown
     </form>
 </div>
 
-
-
-
        </div>  
 </div>
 
 <!-- ↑ -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 
 @endsection
